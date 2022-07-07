@@ -41,6 +41,11 @@ function Navbar(props) {
                 Поддержка
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/login">
+                Логин
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
