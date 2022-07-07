@@ -24,29 +24,29 @@ function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="navbar-brand" to="/">
+                <Link to="/" className="navbar-brand" >
                   Logo
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/">
+                <Link to="/" className="nav-link" >
                   Главная
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/advert">
+                <Link to="/advert" className="nav-link" >
                   Объявления
                 </Link>
               </li>
               <li className="nav-item">
-                <Link
+                <button
                   className="nav-link"
                   onClick={() => {
                     dispatch({ type: LOGOUT_USER });
                   }}
                 >
                   Выйти
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
@@ -54,27 +54,27 @@ function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="navbar-brand" to="/">
+                <Link to="/" className="navbar-brand">
                   Logo
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/">
+                <Link to="/" className="nav-link" >
                   Главная
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/advert">
+                <Link to="/advert" className="nav-link" >
                   Объявления
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/login">
+                <Link to="/login" className="nav-link" >
                   Логин
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/registration">
+                <Link to="/registration" className="nav-link" >
                   Регистрация
                 </Link>
               </li>

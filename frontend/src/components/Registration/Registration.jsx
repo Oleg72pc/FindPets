@@ -11,12 +11,12 @@ function Registration(props) {
     e.preventDefault();
 
     const data = {
-      login: e.target.login.value,
+      userName: e.target.userName.value,
       phoneNumber: e.target.phoneNumber.value,
       password: e.target.password.value,
     };
 
-    fetch('http://localhost:4000/registration', {
+    fetch('/registration', {
       headers: { 'content-type': 'application/json' },
       method: 'POST',
       body: JSON.stringify(data),
@@ -29,7 +29,7 @@ function Registration(props) {
   return (
     <form onSubmit={addUser} className="login-wrapper">
       <h1>Регистрация</h1>
-      <input className="login" name="login" type="text" placeholder="Введите логин" />
+      <input className="userName" name="userName" type="text" placeholder="Введите логин" />
       <input
         className="phoneNumber"
         name="phoneNumber"

@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const { User } = require('../db/models');
 
 router.post('/', async (req, res) => {
-  const {  } = req.body;
+  const { userName, phoneNumber, password } = req.body;
   const user = await User.findOne({
     where: {
       phoneNumber,
@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
     const newUser = await User.create({
       userName,
       password: await bcrypt.hash(password, 10),
-      isAdmin,
+      isAdmin: false,
       phoneNumber,
     });
     req.session.user = newUser;

@@ -7,7 +7,6 @@ export const userReducer = (state = initialState, action) => {
     case LOG_USER:
       return { ...state, user: action.payload };
     case REG_USER:
-      console.log(action.payload);
       return { ...state, user: action.payload };
     case LOGOUT_USER:
       return { ...state, user: null };
