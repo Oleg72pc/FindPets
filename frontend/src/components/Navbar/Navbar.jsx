@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { LOGOUT_USER } from '../../redux/actionTypes/userAT';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Navbar(props) {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.userRed.user);
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        {/* <a className="navbar-brand" href="#">
-          Navbar
-        </a> */}
         <button
           className="navbar-toggler"
           type="button"
@@ -19,30 +20,67 @@ function Navbar(props) {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className="navbar-brand" to="/">
-                Logo
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Главная
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/advert">
-                Объявления
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/support">
-                Поддержка
-              </Link>
-            </li>
-          </ul>
-        </div>
+        {user ? (
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link className="navbar-brand" to="/">
+                  Logo
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/">
+                  Главная
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/advert">
+                  Объявления
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  onClick={() => {
+                    dispatch({ type: LOGOUT_USER });
+                  }}
+                >
+                  Выйти
+                </Link>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link className="navbar-brand" to="/">
+                  Logo
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/">
+                  Главная
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/advert">
+                  Объявления
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  Логин
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/registration">
+                  Регистрация
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </nav>
   );
