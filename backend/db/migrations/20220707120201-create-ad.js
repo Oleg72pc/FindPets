@@ -45,7 +45,7 @@ module.exports = {
         },
       },
       cityId: {
-        allowNull: false,
+        // allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Cities',
@@ -54,7 +54,7 @@ module.exports = {
       },
 
       typeId: {
-        allowNull: false,
+        // allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'TypeAnimals',

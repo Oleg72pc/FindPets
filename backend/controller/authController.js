@@ -2,12 +2,12 @@ const bcrypt = require('bcrypt');
 const { User } = require('../db/models');
 
 async function createUser(req, res) {
-  const {  } = req.body;
+  const { userName, password, phoneNumber } = req.body;
   try {
     const user = await User.create({
       userName,
       password: await bcrypt.hash(password, 10),
-      isAdmin,
+      isAdmin: false,
       phoneNumber,
     });
     req.session.user = user;
@@ -18,7 +18,7 @@ async function createUser(req, res) {
 }
 
 async function loginUser(req, res) {
-  const {  } = req.body;
+  const { phoneNumber, password } = req.body;
   let user;
   try {
     user = await User.findOne({
@@ -46,12 +46,8 @@ async function loginUser(req, res) {
 }
 
 async function logoutUser(req, res) {
-  req.session.destroy((err) => {
-    if (err) {
-      return res.status(500).json({ message: 'Ошибка при удалении сессии' });
-    }
-    res.clearCookie('user_sid');
-    res.sendStatus(200);
-  });
+  req.session.destroy();
+  res.clearCookie('user_sid');
+  res.sendStatus(200);
 }
 module.exports = { createUser, loginUser, logoutUser };

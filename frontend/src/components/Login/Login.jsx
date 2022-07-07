@@ -9,12 +9,11 @@ function Login() {
 
   const logUser = (e) => {
     e.preventDefault();
-
     const data = {
-      login: e.target.login.value,
+      phoneNumber: e.target.phoneNumber.value,
       password: e.target.password.value,
     };
-    fetch('http://localhost:4000/login', {
+    fetch('/login', {
       headers: { 'content-type': 'application/json' },
       method: 'POST',
       body: JSON.stringify(data),
@@ -24,12 +23,12 @@ function Login() {
         dispatch(logUserAC(data));
       });
 
-    navigation('/login');
+    navigation('/');
   };
   return (
     <form onSubmit={logUser} className="login-wrapper">
       <h1>Логин</h1>
-      <input placeholder="логин" className="login" name="login" type="text" />
+      <input placeholder="Телефон" className="phoneNumber" name="phoneNumber" type="text" />
       <input placeholder="Пароль" className="password" name="password" type="password" />
       <button>Войти</button>
     </form>

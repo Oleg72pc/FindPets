@@ -58,7 +58,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
     },
     cityId: {
-      allowNull: false,
+      // allowNull: false,
       type: DataTypes.INTEGER,
       references: {
         model: 'Cities',
@@ -66,7 +66,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     colorId: {
-      allowNull: false,
+      // allowNull: false,
       type: DataTypes.INTEGER,
       references: {
         model: 'PetColors',
@@ -74,7 +74,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     typeId: {
-      allowNull: false,
+      // allowNull: false,
       type: DataTypes.INTEGER,
       references: {
         model: 'TypeAnimals',
