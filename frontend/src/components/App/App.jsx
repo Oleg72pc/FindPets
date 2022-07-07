@@ -4,9 +4,9 @@ import Navbar from '../Navbar/Navbar';
 import Home from '../Home/Home'
 import Footer from '../Footer/Footer';
 import Advert from '../Advert/Advert';
-import Support from '../Support/Support';
 import Login from '../Login/Login';
 import { store } from '../../redux/store';
+import Registration from '../Registration/Registration';
 
 function App(props) {
   return (
@@ -17,8 +17,8 @@ function App(props) {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/advert" element={<Advert />} />
-            <Route path="/support" element={<Support />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/registration" element={<Registration /> } />
           </Routes>
           <Footer />
         </BrowserRouter>

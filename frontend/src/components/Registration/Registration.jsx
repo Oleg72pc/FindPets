@@ -12,7 +12,7 @@ function Registration(props) {
 
     const data = {
       login: e.target.login.value,
-      email: e.target.email.value,
+      phoneNumber: e.target.phoneNumber.value,
       password: e.target.password.value,
     };
 
@@ -29,18 +29,18 @@ function Registration(props) {
   return (
     <form onSubmit={addUser} className="login-wrapper">
       <h1>Регистрация</h1>
-      <input className="login" name="login" type="text" placeholder="введите логин" />
+      <input className="login" name="login" type="text" placeholder="Введите логин" />
       <input
-        className="phoneName"
-        name="phoneName"
+        className="phoneNumber"
+        name="phoneNumber"
         type="text"
-         placeholder="введите телефон"
+        placeholder="Введите телефон"
       />
       <input
         className="password"
         name="password"
         type="password"
-        placeholder="введите пароль"
+        placeholder="Введите пароль"
       />
       <button>Зарегистрироваться</button>
     </form>

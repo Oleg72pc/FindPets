@@ -37,13 +37,13 @@ function Navbar(props) {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/support">
-                Поддержка
+              <Link className="nav-link" to="/login">
+                Логин
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/login">
-                Логин
+              <Link className="nav-link" to="/registration">
+                Регистрация
               </Link>
             </li>
           </ul>
