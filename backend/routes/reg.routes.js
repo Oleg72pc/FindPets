@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
   });
   if (user) {
     res.status(401).json({
-      text: 'Такой email уже зарегистрирован',
+      text: 'Такой номер телефона уже зарегистрирован',
     });
   } else {
     const newUser = await User.create({
