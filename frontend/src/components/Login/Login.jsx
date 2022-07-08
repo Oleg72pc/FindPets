@@ -1,5 +1,5 @@
 import React from 'react';
-import { logUserAC } from '../../redux/actionCreators/userLogAC';
+import { logUserAC } from '../../redux/actionCreators/userAC';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ function Login() {
       phoneNumber: e.target.phoneNumber.value,
       password: e.target.password.value,
     };
-    fetch('/login', {
+    fetch('/auth/login', {
       headers: { 'content-type': 'application/json' },
       method: 'POST',
       body: JSON.stringify(data),

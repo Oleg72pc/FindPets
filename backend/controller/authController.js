@@ -1,6 +1,20 @@
 const bcrypt = require('bcrypt');
 const { User } = require('../db/models');
 
+async function sessionUser(req, res) {
+  const { user } = req.session;
+  if (user) {
+    res.send({
+      userName: user.userName,
+      phoneNumber: user.phoneNumber,
+      isAdmin: user.isAdmin,
+    });
+  } else {
+    console.log('not user');
+    res.send(null);
+  }
+}
+
 async function createUser(req, res) {
   const { userName, password, phoneNumber } = req.body;
   try {
@@ -50,4 +64,9 @@ async function logoutUser(req, res) {
   res.clearCookie('user_sid');
   res.sendStatus(200);
 }
-module.exports = { createUser, loginUser, logoutUser };
+module.exports = {
+  createUser,
+  loginUser,
+  logoutUser,
+  sessionUser,
+};
