@@ -16,7 +16,7 @@ function Registration(props) {
       password: e.target.password.value,
     };
 
-    fetch('/registration', {
+    fetch('auth/registration', {
       headers: { 'content-type': 'application/json' },
       method: 'POST',
       body: JSON.stringify(data),
@@ -24,7 +24,7 @@ function Registration(props) {
       .then((res) => res.json())
       .then((data) => dispatch(addUserAC(data)));
 
-    navigation('/registration');
+    navigation('/');
   };
   return (
     <form onSubmit={addUser} className="login-wrapper">
