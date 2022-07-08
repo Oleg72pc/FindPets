@@ -23,21 +23,53 @@ export default function AdventForm() {
         <form>
            <div>
             <div> Тип животного</div>
-            <div> {info.typeAnimal.map(animal => {
-              return <div>
+            <div> {info.typeAnimal?.map(animal => {
+             return <div key={animal.id}>
                 <h2>{animal.title}</h2>
-                <input type='checkbox'/>
+                <input type='radio' value={animal.id} name = 'animal'/>
               </div>
             })}</div>
            </div>
            <div>
             <div> Цвет животного </div>
-            <div></div>
+            <div> {info.petColor?.map(el => {
+              return <div key={el.id}>
+                <h2>{el.title}</h2>
+                <input type = 'radio' value={el.id} name = 'color'/>
+              </div>
+            } )}
             </div>
-
-
+            </div>
+              <div>
+                <div> Пол животного </div>
+                <div><p>Мальчик</p> <input type='radio' value = 'true' name='gender'/></div>
+                <div><p>Девочка</p> <input type='radio' value = 'false' name='gender'/></div>
+              </div>
+              <div>
+                <div>Город</div>
+                <select>{info.city?.map(el => <option key={el.id} value={el.title}>{el.title}</option>)}</select>
+              </div>
+              <div>
+                <div><p>Адрес пропажи</p> <input type='text' name='address'/></div>
+              </div>
+              <div>
+                <div><p>Описание</p> <input type='text' name='description'/></div>
+              </div>
+              <div>
+                <div> Дата и время пропажи </div>
+                <div><p>Сейчас</p> <input type='radio' name='date'/></div>
+              </div>
+              <div>
+                <div><p>Имя владельца</p> <input type='text' name='nameUser'/></div>
+              </div>
+              <div>
+                <div><p>Телефон для связи</p> <input type='text' name='phone'/></div>
+              </div>
+              <div>
+                <div><p>Пароль для регистрации</p> <input type='text' name='password'/></div>
+              </div>
+              <button type='submit'> Отправить форму </button>
         </form>
-    
     </div>
   )
 }
