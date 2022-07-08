@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
-import { logoutUserAC } from '../../redux/actionCreators/userAC';
+import { getFetchLogoutUserAC } from '../../redux/thunk/thunk';
 
 
 function Navbar(props) {
@@ -10,12 +10,8 @@ function Navbar(props) {
   const navigate = useNavigate();
   const user = useSelector((state) => state.userRed.user);
   const hendlerLogout = useCallback(() => {
-    fetch('/auth/logout')
-      .then((data) => data.json())
-      .then((data) => {
-        dispatch(logoutUserAC(data));
-        navigate('/');
-      });
+      dispatch(getFetchLogoutUserAC())
+      navigate('/');
   }, [dispatch, navigate]);
   return (
     <nav className="navbar navbar-expand-lg bg-light">

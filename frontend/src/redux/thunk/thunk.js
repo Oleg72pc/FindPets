@@ -1,4 +1,9 @@
-import { sessionUserAC, logUserAC, addUserAC } from '../actionCreators/userAC';
+import { 
+  sessionUserAC, 
+  logUserAC,
+  addUserAC,
+  logoutUserAC } from '../actionCreators/userAC';
+import { initAdvetrsAC } from '../actionCreators/advertsAC';
 
 export const getFetchUserSessionAC = () => {
   return (dispatch) => {
@@ -37,3 +42,23 @@ export const postFetchUserRegistrationAC = (payload) => {
   }
 }
 
+export const getFetchInitAdvertsAC = () => {
+  return (dispatch) => {
+    fetch('/ad')
+    .then((res) => res.json())
+    .then((result) => {
+      dispatch(initAdvetrsAC(result));
+    });
+  }
+}
+
+
+export const getFetchLogoutUserAC = () => {
+  return (dispatch) => {
+    fetch('/auth/logout')
+      .then((data) => data.json())
+      .then((data) => {
+        dispatch(logoutUserAC(data));
+      });
+  }
+}

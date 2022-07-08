@@ -1,15 +1,14 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFetchInitAdvertsAC } from '../../redux/thunk/thunk';
 import './Adverts.css'
 
 function Adverts(props) {
-  const [data, setData] = React.useState();
+  const data = useSelector((state) => state.advertRed.adverts);
+  const dispatch = useDispatch()
   React.useEffect(() => {
-    fetch('/ad')
-      .then((res) => res.json())
-      .then((result) => {
-        setData(result);
-      });
-  }, []);
+    dispatch(getFetchInitAdvertsAC())
+  }, [dispatch]);
   return (
     <>
       {data ? (
