@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 import { getFetchInitAdvertsAC } from '../../redux/thunk/thunk';
 import './Adverts.css'
 
@@ -13,6 +14,7 @@ function Adverts(props) {
     <>
       {data ? (
         data.map((item) => (
+          <Link key={item.id} to={`${item.id}`} > 
           <div key={item.id} className="card">
             <img src={item.photo} alt="dog" />
             <div className="container">
@@ -21,6 +23,7 @@ function Adverts(props) {
               <div>{item.location}</div>
             </div>
           </div>
+          </Link>
         ))
       ) : (
         <div>no data</div>

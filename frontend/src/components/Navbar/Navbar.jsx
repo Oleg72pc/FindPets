@@ -41,7 +41,7 @@ function Navbar(props) {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/advert" className="nav-link" >
+                <Link to="/adverts" className="nav-link" >
                   Объявления
                 </Link>
               </li>
@@ -69,7 +69,7 @@ function Navbar(props) {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/advert" className="nav-link" >
+                <Link to="/adverts" className="nav-link" >
                   Объявления
                 </Link>
               </li>
