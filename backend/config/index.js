@@ -4,7 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const morgan = require('morgan');
+const logger = require('morgan');
 
 const sessionConfig = require('./sessionConfig');
 const corsConfig = require('./corsConfig');
@@ -20,7 +20,7 @@ const config = (app) => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(express.static(path.join(process.env.PWD, 'public')));
-  app.use(morgan('dev'));
+  app.use(logger('dev'));
 
   // sessions
   app.use(cookieParser());

@@ -1,17 +1,26 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import Navbar from '../Navbar/Navbar';
 import Home from '../Home/Home';
 import Footer from '../Footer/Footer';
 import Advert from '../Advert/Advert';
 import Login from '../Login/Login';
-import { store } from '../../redux/store';
 import Registration from '../Registration/Registration';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { sessionUserAC } from '../../redux/actionCreators/userAC';
 
 function App(props) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    fetch('/auth/session')
+      .then((data) => data.json())
+      .then((data) => {
+        dispatch(sessionUserAC(data));
+      });
+  }, [dispatch]);
+  
   return (
     <div>
-      <Provider store={store}>
         <BrowserRouter>
           <Navbar />
           <Routes>
@@ -22,7 +31,6 @@ function App(props) {
           </Routes>
           <Footer />
         </BrowserRouter>
-      </Provider>
     </div>
   );
 }

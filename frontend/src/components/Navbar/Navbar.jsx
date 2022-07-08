@@ -1,11 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { LOGOUT_USER } from '../../redux/actionTypes/userAT';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useCallback } from 'react';
+import { logoutUserAC } from '../../redux/actionCreators/userAC';
+
 
 function Navbar(props) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.userRed.user);
+  console.log(user);
+  const hendlerLogout = useCallback(() => {
+    fetch('/auth/logout')
+      .then((data) => data.json())
+      .then((data) => {
+        dispatch(logoutUserAC(data));
+        navigate('/');
+      });
+  }, [dispatch, navigate]);
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
@@ -41,11 +53,9 @@ function Navbar(props) {
               <li className="nav-item">
                 <button
                   className="nav-link"
-                  onClick={() => {
-                    dispatch({ type: LOGOUT_USER });
-                  }}
+                  onClick={hendlerLogout}
                 >
-                  Выйти
+                  Выйти, {user.userName}
                 </button>
               </li>
             </ul>
