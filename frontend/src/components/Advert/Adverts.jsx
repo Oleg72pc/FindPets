@@ -1,13 +1,12 @@
 import React from 'react';
-import './Advert.css'
+import './Adverts.css'
 
-function Advert(props) {
+function Adverts(props) {
   const [data, setData] = React.useState();
   React.useEffect(() => {
-    fetch('http://localhost:4000/ad')
+    fetch('/ad')
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         setData(result);
       });
   }, []);
@@ -31,4 +30,4 @@ function Advert(props) {
   );
 }
 
-export default Advert;
+export default Adverts;

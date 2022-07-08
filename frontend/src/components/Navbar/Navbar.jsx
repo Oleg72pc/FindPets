@@ -9,7 +9,6 @@ function Navbar(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.userRed.user);
-  console.log(user);
   const hendlerLogout = useCallback(() => {
     fetch('/auth/logout')
       .then((data) => data.json())
