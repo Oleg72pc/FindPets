@@ -6,17 +6,11 @@ const { sequelize } = require('./db/models');
 const authRouter = require('./routes/auth.routes');
 const adRouter = require('./routes/ad.routes');
 
-// const regRouter = require('./routes/reg.routes');
-// const logRouter = require('./routes/log.routes');
-
-
 const app = express();
 const PORT = process.env.PORT ?? 4000;
 config(app);
 
 // routes use
-// app.use('/registration', regRouter);
-// app.use('/login', logRouter);
 app.use('/auth', authRouter);
 app.use('/ad', adRouter);
 

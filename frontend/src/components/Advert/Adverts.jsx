@@ -1,16 +1,14 @@
 import React from 'react';
-import './Advert.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { getFetchInitAdvertsAC } from '../../redux/thunk/thunk';
+import './Adverts.css'
 
-function Advert(props) {
-  const [data, setData] = React.useState();
+function Adverts(props) {
+  const data = useSelector((state) => state.advertRed.adverts);
+  const dispatch = useDispatch()
   React.useEffect(() => {
-    fetch('http://localhost:4000/ad')
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-        setData(result);
-      });
-  }, []);
+    dispatch(getFetchInitAdvertsAC())
+  }, [dispatch]);
   return (
     <>
       {data ? (
@@ -31,4 +29,4 @@ function Advert(props) {
   );
 }
 
-export default Advert;
+export default Adverts;
