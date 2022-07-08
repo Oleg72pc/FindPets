@@ -11,7 +11,7 @@ export const userReducer = (state = initialState, action) => {
     case LOGOUT_USER:
       return { ...state, user: null };
       case SESSION_USER:
-      return { ...state, user: action.payload };
+      return { ...state, user: action.payload.user };
     default:
       return state;
   }

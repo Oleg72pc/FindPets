@@ -5,13 +5,15 @@ async function sessionUser(req, res) {
   const { user } = req.session;
   if (user) {
     res.send({
-      userName: user.userName,
-      phoneNumber: user.phoneNumber,
-      isAdmin: user.isAdmin,
+      user: {
+        userName: user.userName,
+        phoneNumber: user.phoneNumber,
+        isAdmin: user.isAdmin,
+      },
     });
   } else {
     console.log('not user');
-    res.send(null);
+    res.send({ user: null });
   }
 }
 
@@ -62,7 +64,7 @@ async function loginUser(req, res) {
 async function logoutUser(req, res) {
   req.session.destroy();
   res.clearCookie('user_sid');
-  res.sendStatus(200);
+  res.send({ success: true });
 }
 module.exports = {
   createUser,

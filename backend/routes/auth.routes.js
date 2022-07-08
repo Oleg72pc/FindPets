@@ -4,7 +4,7 @@ const {
 } = require('../controller/authController');
 
 authRouter.post('/login', loginUser);
-authRouter.delete('/logout', logoutUser);
+authRouter.get('/logout', logoutUser);
 authRouter.get('/session', sessionUser);
 authRouter.post('/registration', createUser);
 
