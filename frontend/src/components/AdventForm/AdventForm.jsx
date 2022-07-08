@@ -15,12 +15,29 @@ export default function AdventForm() {
 
     }, [dispatch])
 
+    const addAdvent = (e) => {
+      const data = {
+        title: 'Пропал',
+        description: e.target.description.value,
+        genderAnimal: e.target.gender.value,
+        location: e.target.address.value,
+        lossTime: e.target.date.value,
+        password: e.target.password.value,
+        phone: e.target.phone.value,
+        nameUser: e.target.nameUser.value,
+        cityId: e.target.city.value,
+        colorId: e.target.color.value,
+        typeId: e.target.animal.value,
+      }
+      
+    }
+
     
 
 
   return (
     <div>
-        <form>
+        <form onSubmit={addAdvent}>
            <div>
             <div> Тип животного</div>
             <div> {info.typeAnimal?.map(animal => {
@@ -47,7 +64,7 @@ export default function AdventForm() {
               </div>
               <div>
                 <div>Город</div>
-                <select>{info.city?.map(el => <option key={el.id} value={el.title}>{el.title}</option>)}</select>
+                <select name='city'>{info.city?.map(el => <option key={el.id} value={el.id}>{el.title} </option>)}</select>
               </div>
               <div>
                 <div><p>Адрес пропажи</p> <input type='text' name='address'/></div>
