@@ -1,4 +1,4 @@
-import { LOG_USER } from '../actionTypes/userLogAT';
+import { LOG_USER } from '../actionTypes/userAT';
 
 export const logUserAC = (payload) => {
   return {

@@ -7,6 +7,7 @@ import Advert from '../Advert/Advert';
 import Login from '../Login/Login';
 import { store } from '../../redux/store';
 import Registration from '../Registration/Registration';
+import AdventForm from '../AdventForm/AdventForm';
 
 function App(props) {
   return (
@@ -19,6 +20,7 @@ function App(props) {
             <Route path="/advert" element={<Advert />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registration" element={<Registration />} />
+            <Route path="/form" element={<AdventForm />} />
           </Routes>
           <Footer />
         </BrowserRouter>
