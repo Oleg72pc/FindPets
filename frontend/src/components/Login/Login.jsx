@@ -1,7 +1,7 @@
 import React from 'react';
-import { logUserAC } from '../../redux/actionCreators/userLogAC';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { postFetchUserLoginAC } from '../../redux/thunk/thunk';
 
 function Login() {
   const dispatch = useDispatch();
@@ -13,15 +13,7 @@ function Login() {
       phoneNumber: e.target.phoneNumber.value,
       password: e.target.password.value,
     };
-    fetch('/login', {
-      headers: { 'content-type': 'application/json' },
-      method: 'POST',
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch(logUserAC(data));
-      });
+    dispatch(postFetchUserLoginAC(data))
 
     navigation('/');
   };
