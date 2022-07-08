@@ -4,6 +4,9 @@ const { sequelize } = require('./db/models');
 
 // require routes
 const authRouter = require('./routes/auth.routes');
+
+const infoRouter = require('./routes/getInfo.routes');
+
 const adRouter = require('./routes/ad.routes');
 
 const app = express();
@@ -12,6 +15,7 @@ config(app);
 
 // routes use
 app.use('/auth', authRouter);
+app.use('/getAnimalInfo', infoRouter);
 app.use('/ad', adRouter);
 
 app.listen(PORT, async () => {
