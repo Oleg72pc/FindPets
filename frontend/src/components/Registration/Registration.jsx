@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addUserAC } from '../../redux/actionCreators/userAC';
 import { useNavigate } from 'react-router-dom';
+import { postFetchUserRegistrationAC } from '../../redux/thunk/thunk';
 
 
 function Registration(props) {
@@ -16,15 +16,7 @@ function Registration(props) {
       phoneNumber: e.target.phoneNumber.value,
       password: e.target.password.value,
     };
-
-    fetch('auth/registration', {
-      headers: { 'content-type': 'application/json' },
-      method: 'POST',
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => dispatch(addUserAC(data)));
-
+    dispatch(postFetchUserRegistrationAC(data))
     navigation('/');
   };
   return (

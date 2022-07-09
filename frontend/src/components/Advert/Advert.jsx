@@ -1,7 +1,9 @@
 import React from 'react';
-import './Advert.css'
+import { useParams } from 'react-router-dom';
+
 
 function Advert(props) {
+    const {advertId} = useParams();
   const [data, setData] = React.useState();
   React.useEffect(() => {
     fetch('http://localhost:4000/ad')
@@ -13,6 +15,9 @@ function Advert(props) {
   }, []);
   return (
     <div className='contentAdvert'>
+        <div>
+            param {advertId}
+        </div>
       {data ? (
         data.map((item) => (
           <div key={item.id} className="card">
