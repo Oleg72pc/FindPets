@@ -7,6 +7,8 @@ import Footer from '../Footer/Footer';
 import Adverts from '../Adverts/Adverts';
 import Login from '../Login/Login';
 import Registration from '../Registration/Registration';
+import { sessionUserAC } from '../../redux/actionCreators/userAC';
+import './App.css'
 import Advert from '../Advert/Advert';
 import AdventForm from '../AdventForm/AdventForm';
 import { getFetchUserSessionAC } from '../../redux/thunk/thunk';

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postFetchUserRegistrationAC } from '../../redux/thunk/thunk';
 
+
 function Registration(props) {
   const dispatch = useDispatch();
   const navigation = useNavigate();

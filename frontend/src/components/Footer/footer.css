@@ -1,3 +1,10 @@
-.footer {
-  flex: 0 0 auto;
+footer {
+  margin-top: 100px;
+	background-color: #EDC79A;
+	padding: 5px;
+}
+
+footer .footer1 {
+    text-align: center;
+    color: white;
 }
