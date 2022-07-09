@@ -8,6 +8,7 @@ import Registration from '../Registration/Registration';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { sessionUserAC } from '../../redux/actionCreators/userAC';
+import './App.css'
 
 function App(props) {
   const dispatch = useDispatch();

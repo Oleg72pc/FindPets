@@ -12,7 +12,7 @@ function Advert(props) {
       });
   }, []);
   return (
-    <>
+    <div className='contentAdvert'>
       {data ? (
         data.map((item) => (
           <div key={item.id} className="card">
@@ -27,7 +27,7 @@ function Advert(props) {
       ) : (
         <div>no data</div>
       )}
-    </>
+    </div>
   );
 }
 

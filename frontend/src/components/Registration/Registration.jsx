@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addUserAC } from '../../redux/actionCreators/userAC';
 import { useNavigate } from 'react-router-dom';
 
+
 function Registration(props) {
   const dispatch = useDispatch();
   const navigation = useNavigate();
