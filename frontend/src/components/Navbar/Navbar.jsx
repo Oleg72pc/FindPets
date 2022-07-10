@@ -15,67 +15,123 @@ function Navbar(props) {
       navigate('/');
   }, [dispatch, navigate]);
   return (
-    <nav className="container">
-      <div className="navig">
-        {user ? (
-          <div className="menu" id="navbarNav">
-            <ul className="nav_ul">
-              {/* <li className="logo">
-                <Link to="/" className="logo">
-                  Logo
-                </Link>
-              </li> */}
-              <li className="nav_li">
-                <Link to="/" className="nav-link">
-                  Главная
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/adverts" className="nav-link" >
-                  Объявления
+    <section className="header-down">
+      <div className="container">
+        <div className="logo-img">
+          <h1>
+            <img src="img/logo.png" alt="r" /> {' '}
+            FindPets
+          </h1>
+        </div>
+        <nav>
+          {user ? (
+            <ul className="ulfirst">
+              <li>
+                <Link to="/" classNameName="nav-link">
+                  Главная{' '}
                 </Link>
               </li>
-              <li className="nav_li">
-                <button className="nav-link" onClick={hendlerLogout}>
-                  Выйти, {user.userName}
+              <li>
+                <Link to="/adverts" classNameName="nav-link">
+                  Объявления{' '}
+                </Link>
+              </li>
+              <li>
+                <button classNameName="btn-nav" onClick={hendlerLogout}>
+                  Выйти, {user.userName}{' '}
                 </button>
               </li>
             </ul>
-          </div>
-        ) : (
+          ) : (
+            <ul className="ulfirst">
+              <li>
+                <Link to="/" classNameName="nav-link">
+                  Главная{' '}
+                </Link>
+              </li>
+              <li>
+                <Link to="/adverts" classNameName="nav-link">
+                  Объявления{' '}
+                </Link>
+              </li>
 
-          <div className="menu" id="navbarNav">
-            <ul className="nav_ul">
-              <li className="nav_li">
-                <Link to="/" className="navbar-brand">
-                  Logo
+              <li>
+                <Link to="/login" classNameName="nav-link">
+                  Логин{' '}
                 </Link>
               </li>
-              <li className="nav_li">
-                <Link to="/" className="nav-link">
-                  Главная
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/adverts" className="nav-link" >
-                  Объявления
-                </Link>
-              </li>
-              <li className="nav_li">
-                <Link to="/login" className="nav-link">
-                  Логин
-                </Link>
-              </li>
-              <li className="nav_li">
-                <Link to="/registration" className="nav-link">
-                  Регистрация
+              <li>
+                <Link to="/registration" classNameName="nav-link">
+                  Регистрация{' '}
                 </Link>
               </li>
             </ul>
-          </div>
-        )}
+          )}
+        </nav>
       </div>
-    </nav>
+    </section>
+
+    // <nav classNameName="container">
+    //   <div classNameName="navig">
+    //     {user ? (
+    //       <div classNameName="menu" id="navbarNav">
+    //         <ul classNameName="nav_ul">
+    //           {/* <li classNameName="logo">
+    //             <Link to="/" classNameName="logo">
+    //               Logo
+    //             </Link>
+    //           </li> */}
+    //           <li classNameName="nav_li">
+    //             <Link to="/" classNameName="nav-link">
+    //               Главная
+    //             </Link>
+    //           </li>
+    //           <li classNameName="nav-item">
+    //             <Link to="/adverts" classNameName="nav-link" >
+    //               Объявления
+    //             </Link>
+    //           </li>
+    //           <li classNameName="nav_li">
+    //             <button classNameName="nav-link" onClick={hendlerLogout}>
+    //               Выйти, {user.userName}
+    //             </button>
+    //           </li>
+    //         </ul>
+    //       </div>
+    //     ) : (
+
+    //       <div classNameName="menu" id="navbarNav">
+    //         <ul classNameName="nav_ul">
+    //           <li classNameName="nav_li">
+    //             <Link to="/" classNameName="navbar-brand">
+    //               Logo
+    //             </Link>
+    //           </li>
+    //           <li classNameName="nav_li">
+    //             <Link to="/" classNameName="nav-link">
+    //               Главная
+    //             </Link>
+    //           </li>
+    //           <li classNameName="nav-item">
+    //             <Link to="/adverts" classNameName="nav-link" >
+    //               Объявления
+    //             </Link>
+    //           </li>
+    //           <li classNameName="nav_li">
+    //             <Link to="/login" classNameName="nav-link">
+    //               Логин
+    //             </Link>
+    //           </li>
+    //           <li classNameName="nav_li">
+    //             <Link to="/registration" classNameName="nav-link">
+    //               Регистрация
+    //             </Link>
+    //           </li>
+    //         </ul>
+    //       </div>
+    //     )}
+    //   </div>
+    // </nav>
   );
 }
 
