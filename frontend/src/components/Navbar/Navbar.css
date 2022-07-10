@@ -7,8 +7,8 @@ font-family: 'Roboto', sans-serif; */
 .header-top-area {
   background-color: #000;
   padding: 1em;
-  font-family: 'Poppins', sans-serif;
   font-weight: 900;
+  font-family: 'Prata', sans-serif;
 }
 
 .header-top {
@@ -37,8 +37,17 @@ font-family: 'Roboto', sans-serif; */
   justify-content: space-between;
   flex-basis: 15rem;
 }
-.logo {
+.nav-logo {
   text-decoration: none;
+}
+
+.nav-h1 {
+  text-decoration: none;
+  font-size: 25px;
+  color: #272727;
+  font-weight: 900;
+  padding-bottom: 5px;
+  text-decoration: overline #ff6411;
 }
 
 .header-contact a,
@@ -74,8 +83,9 @@ font-family: 'Roboto', sans-serif; */
   box-sizing: border-box;
   padding: 0 1em;
   z-index: 1;
-  box-shadow: 0px 3px 16px 0px rgb(0 0 0 / 10%);
-  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 3px 20px 0px rgb(0 0 0 / 10%);
+  background: #f7f6f6;
+  height: 70px;
 }
 
 .header-down .ulfirst {
@@ -89,11 +99,11 @@ font-family: 'Roboto', sans-serif; */
 
 .header-down .ulfirst li a {
   text-decoration: none;
-  
-  color: #102955;
+  font-size: 18px;
+  color: #272727;
   transition: 0.3s ease-in-out color;
-  padding: 2.5rem 0;
-  font-weight: bold;
+  padding: 1.5rem 0;
+  /* font-weight: bold; */
 }
 
 .header-down .ulfirst li:hover > a,
@@ -104,10 +114,9 @@ font-family: 'Roboto', sans-serif; */
 .header-down .ulfirst li {
   display: flex;
   gap: 5px;
-  height: 6rem;
+  height: 4rem;
   align-items: center;
   margin-left: 30px;
-  
 }
 
 .header-down .ulfirst li .ulsecond {
@@ -128,7 +137,6 @@ nav .ulsecond li {
 
 .header-down .ulsecond li a {
   padding: 1rem 0;
-  
 }
 
 .header-down .ulsecond {
@@ -148,7 +156,9 @@ nav .ulsecond li {
   width: 10rem;
   display: list-item;
 }
-
-.btn-nav {
-  
+.btn-nav1 {
+  border: none;
+  outline: none;
+ font-size: 16px;
+ background-color: #f7f6f6;
 }

@@ -2,6 +2,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    
+    
 }
 
 :root {
@@ -26,8 +28,8 @@ body {
     font-family: "Poppins", sans-serif;
     font-weight: normal;
     font-style: normal;
-    margin-bottom: 5rem;
-   
+    /* margin-bottom: 5rem; */
+   background-color: #f7f6f6;
 }
 
 ::-webkit-scrollbar {
@@ -39,7 +41,7 @@ body {
 }
 
 ::selection {
-    color: #fff;
+    color: rgb(255, 255, 255);
     background: #00000099;
 }
 
