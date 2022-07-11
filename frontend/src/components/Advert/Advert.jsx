@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 
 function Advert(props) {
-    const {advertId} = useParams();
+  const { advertId } = useParams();
   const [data, setData] = React.useState();
   React.useEffect(() => {
     fetch(`/ad/${advertId}`)
@@ -15,6 +15,7 @@ function Advert(props) {
   return (
     <div className='contentAdvert'>
       {data ? (
+        <>
           <div key={data.id} className="card">
             <img style={{width: '200px'}} src={data.photo} alt="dog" />
             <div className="container">
@@ -23,7 +24,8 @@ function Advert(props) {
               <div>{data.location}</div>
             </div>
           </div>
-  
+        
+          </>
       ) : (
         <div>no data</div>
       )}

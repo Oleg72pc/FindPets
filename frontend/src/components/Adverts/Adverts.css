@@ -91,10 +91,11 @@
   grid-row-start: 3;
   grid-row-end: 13;
 }
-.adline {
+.adline-box {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: center;
-  height: 100%;
 }
 .city {
   width: 200px;
@@ -125,4 +126,10 @@
   background: rgb(255, 115, 0);
   text-decoration: none;
   background: rgb(255, 115, 0);
+}
+
+.map {
+  width: 750px;
+  height: 500px;
+  background-color: rgb(31, 31, 31);
 }
