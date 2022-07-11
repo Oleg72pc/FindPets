@@ -1,21 +1,24 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import { getFetchInitAdvertsAC } from '../../redux/thunk/thunk';
 import './Adverts.css';
 
 function Adverts(props) {
   const data = useSelector((state) => state.advertRed.adverts);
   const dispatch = useDispatch();
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(getFetchInitAdvertsAC());
   }, [dispatch]);
+
   return (
     <>
       <section className="grid-12">
         <header className="grid-element bg-gray grid-header">
           <h1>Объявления</h1>
-          <div className="adline">
+          <div className="adline-box">
             <div>
               <p>Где вы ищете</p>
               <input
@@ -63,24 +66,10 @@ function Adverts(props) {
             )}
           </div>
         </aside>
-        <main className="grid-element bg-blue grid-main">Карта API</main>
+        <main className="grid-element bg-blue grid-main">
+         <div id="map" className='map'></div>
+        </main>
       </section>
-      {/* {data ? (
-        data.map((item) => (
-          <Link key={item.id} to={`${item.id}`}>
-            <div key={item.id} className="cardad">
-              <img className="sizeimgcards" src={item.photo} alt="dog" />
-              <div className="containerad">
-                <div className="titlead">{item.title}</div>
-                <div>{item.description}</div>
-                <div>{item.location}</div>
-              </div>
-            </div>
-          </Link>
-        ))
-      ) : (
-        <div>no data</div>
-      )} */}
     </>
   );
 }

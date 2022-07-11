@@ -4,7 +4,17 @@ import { useParams } from 'react-router-dom';
 
 
 function Advert(props) {
-    const {advertId} = useParams();
+
+  const { advertId } = useParams();
+  const [data, setData] = React.useState();
+  React.useEffect(() => {
+    fetch(`/ad/${advertId}`)
+      .then((res) => res.json())
+      .then((result) => {
+        setData(result);
+      });
+  }, [advertId]);
+ 
     const data = useSelector((state) => state.advertRed.adverts);
     const [comment, setComment] = React.useState("");
     
