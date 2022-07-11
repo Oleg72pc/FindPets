@@ -2,7 +2,7 @@ module.exports = {
   async up(queryInterface) {
     await queryInterface.bulkInsert('Ads', [
       {
-        title: 'GhostDog',
+        title: 'missing',
         description: 'Его сложно найти и легко потерять',
         genderAnimal: true,
         location: 'Санкт-Петербург проспект Садовая',
@@ -19,7 +19,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        title: 'CatSamurai',
+        title: 'found',
         description: 'Школьный друг Сплинтера',
         genderAnimal: true,
         location: 'Санкт-Петербург проспект Садовая',
@@ -31,7 +31,7 @@ module.exports = {
         // cityId: 1,
         // colorId: 1,
         // typeId: 1,
-        userId: 1,
+        userId: null,
         createdAt: new Date(),
         updatedAt: new Date(),
       },

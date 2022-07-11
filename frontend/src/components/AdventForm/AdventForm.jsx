@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { initInfoAC } from '../../redux/actionCreators/advertsAC'
 import { useDispatch, useSelector } from 'react-redux'
 import { addPhoto, postFetchAddAdventAC } from '../../redux/thunk/thunk'
 import { useParams } from 'react-router-dom'
 
+
+
 export default function AdventForm() {
-    const dispatch = useDispatch()
+  const [state, setState] = useState('')
+  const dispatch = useDispatch()
    const { info, photo } = useSelector(state => state.advertRed)
  
    let {name} = useParams()
@@ -19,12 +22,6 @@ export default function AdventForm() {
     }, [dispatch])
 
     const addAdvent = (e) => {
-      let dTime = ''
-      if(e.target.dateTime.value){
-        dTime = e.target.dateTime.value
-      } else {
-        dTime = new Date()
-      }
       let data = {}
       if(name === 'missing'){
       data = {
@@ -32,7 +29,7 @@ export default function AdventForm() {
         description: e.target.description.value,
         genderAnimal: e.target.gender.value,
         location: e.target.address.value,
-        lossTime: dTime,
+        lossTime: e.target.dateTime.value,
         spenTime: null,
         password: e.target.password.value,
         phone: e.target.phone.value,
@@ -49,7 +46,7 @@ export default function AdventForm() {
         genderAnimal: null,
         location: e.target.address.value,
         lossTime: null,
-        spenTime: dTime,
+        spenTime: e.target.dateTime.value,
         password: null,
         phone: null,
         nameUser: null,
@@ -120,8 +117,8 @@ export default function AdventForm() {
               </div>
               <div>
                 <div> Дата и время пропажи </div>
-                <input name='dateTime' />
-                <div><p>Сейчас</p> <input type='radio' name='date'/></div>
+                <input defaultValue={state} name='dateTime' />
+                <div><p>Сейчас</p> <input onChange={() => setState(new Date())} type='radio' name='date'/></div>
               </div>
               {name === 'missing' &&  
              <>
