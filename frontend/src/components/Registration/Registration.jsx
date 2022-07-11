@@ -50,17 +50,17 @@ function Registration(props) {
         </div>
       </div>
     </form>
-    // <form onSubmit={addUser} className="login-wrapper">
+    // <form onSubmit={addUser} classNameName="login-wrapper">
     //   <h1>Регистрация</h1>
-    //   <input className="userName" name="userName" type="text" placeholder="Введите логин" />
+    //   <input classNameName="userName" name="userName" type="text" placeholder="Введите логин" />
     //   <input
-    //     className="phoneNumber"
+    //     classNameName="phoneNumber"
     //     name="phoneNumber"
     //     type="text"
     //     placeholder="Введите телефон"
     //   />
     //   <input
-    //     className="password"
+    //     classNameName="password"
     //     name="password"
     //     type="password"
     //     placeholder="Введите пароль"

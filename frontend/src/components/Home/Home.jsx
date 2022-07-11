@@ -10,10 +10,12 @@ function Home(props) {
           <div className="col-lg-6">
             <h1 className="display-5">
               ПОИСК <p className="forrad">ПРОПАВШИХ </p>
-              
               ДОМАШНИХ ЖИВОТНЫХ
             </h1>
-            <p className="startText">Найди своего питомца по фотографии или размести объявление о найденном животном</p>
+            <p className="startText">
+              Найди своего питомца по фотографии или размести объявление о найденном
+              животном
+            </p>
           </div>
         </div>
         {/* </div> */}
@@ -42,7 +44,6 @@ function Home(props) {
         </div>
       </section>
     </>
-
   );
 }
 

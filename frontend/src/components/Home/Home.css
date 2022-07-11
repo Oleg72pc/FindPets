@@ -111,7 +111,7 @@ font-family: 'Roboto', sans-serif; */
 }
 
 .box {
-    border: 2px solid #ff6200;
+    border: 2px solid rgb(255, 115, 0);
     display: flex;
     border-radius: 15px;
     justify-content: center;
@@ -163,17 +163,17 @@ font-family: 'Roboto', sans-serif; */
 
 
   .btn {
-    color: var(--primary-color);
+    color: rgb(255, 115, 0);
     text-decoration: none;
     text-align: center;
     background: #fff;
-    border: 2px solid  #ff6200;
+    border: 2px solid  rgb(255, 115, 0);
     font-weight: 300;
     font-size: 16px;
     width: 13rem;
     padding: 18px 20px;
     border-radius: 50px;
-    transition: 300ms #ff6200, 300ms, background #ff6200;
+    transition: 300ms rgb(255, 115, 0), 300ms, background rgb(255, 115, 0);
     /* cursor: pointer; */
     transition-duration: .3s;
    
@@ -181,9 +181,9 @@ font-family: 'Roboto', sans-serif; */
 
 .btn:hover {
     color: #fff;
-    background: var(--primary-color);
+    background: rgb(255, 115, 0);
     text-decoration: none;
-    background: #ff6200;
+    background: rgb(255, 115, 0)
     
 }
 
@@ -215,7 +215,7 @@ font-family: 'Roboto', sans-serif; */
 }
 
 .forrad {
-    color: #ff6200;
+    color: rgb(255, 115, 0)
 }
 
 
