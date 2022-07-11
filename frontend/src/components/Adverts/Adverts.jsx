@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getFetchInitAdvertsAC } from '../../redux/thunk/thunk';
+import init from '../../apimap'
 import './Adverts.css';
 
 function Adverts(props) {
@@ -11,6 +12,7 @@ function Adverts(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getFetchInitAdvertsAC());
+    window.ymaps.ready(init);
   }, [dispatch]);
 
   return (
@@ -31,9 +33,9 @@ function Adverts(props) {
             </div>
             <div>
               <p>Кого вы ищете</p>
-              <input type="radio" placeholder="Введите город" /> <button>кошку</button>
-              <input type="radio" placeholder="Введите город" /> <button>собаку</button>
-              <input type="radio" placeholder="Введите город" /> <button>другое</button>
+              <input type="radio" name='type' value='cat' /> <label>кошку</label>
+              <input type="radio" name='type' value='dog' /> <label>собаку</label>
+              <input type="radio" name='type' value='other' /> <label>другое</label>
             </div>
             <div>
               <p>Тип объявления</p>
