@@ -5,6 +5,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const logger = require('morgan');
+const fileUpload = require('express-fileupload');
 
 const sessionConfig = require('./sessionConfig');
 const corsConfig = require('./corsConfig');
@@ -19,8 +20,9 @@ const config = (app) => {
   // use
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
-  app.use(express.static(path.join(process.env.PWD, 'public')));
+  app.use(express.static(path.join(__dirname, '../photo')));
   app.use(logger('dev'));
+  app.use(fileUpload());
 
   // sessions
   app.use(cookieParser());

@@ -1,6 +1,8 @@
-const authRouter = require('express').Router();
-const { getAd } = require('../controller/adController');
+const adRouter = require('express').Router();
+const { getAd, postPhoto, addAdvent } = require('../controller/adController');
 
-authRouter.get('/', getAd);
+adRouter.get('/', getAd);
+adRouter.post('/add', addAdvent);
+adRouter.post('/', postPhoto);
 
-module.exports = authRouter;
+module.exports = adRouter;

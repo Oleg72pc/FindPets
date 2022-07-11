@@ -1,4 +1,4 @@
-import { INIT_ADVERTS, ADD_ADVERT } from "../actionTypes/advertsAT"
+import { INIT_ADVERTS, ADD_ADVERT, ADD_PHOTO, INIT_INFO } from "../actionTypes/advertsAT"
 
 export const initAdvetrsAC = (payload) => {
   return {
@@ -13,3 +13,17 @@ export const addAdvertAC = (payload) => {
     payload,
   };
 };
+
+export const addPhotoAC = (payload) => {
+  return {
+    type: ADD_PHOTO, 
+    payload,
+  }
+}
+
+export const initInfoAC = (payload) => {
+  return {
+    type: INIT_INFO,
+    payload
+  }
+}

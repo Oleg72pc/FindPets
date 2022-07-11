@@ -1,7 +1,10 @@
 import React from 'react';
 import './Home.css';
+import {useNavigate} from 'react-router-dom'
+
 
 function Home(props) {
+  const navigate = useNavigate()
   return (
     <>
       <section id="start" className="startSection">
@@ -28,7 +31,7 @@ function Home(props) {
               </div>
               <h2>Мой питомец потерялся</h2>
               <p>Создать объявление о пропаже питомца, чтобы все увидели</p>
-              <button className="btn">Создать объявление</button>
+              <button onClick={()=> navigate('./form/missing')} className="btn">Создать объявление</button>
             </div>
             <div class="box">
               <div class="box-back">
@@ -36,7 +39,7 @@ function Home(props) {
               </div>
               <h2>Найден чужой питомец</h2>
               <p>Вы нашли чужого питомца и хотите разместить объявление</p>
-              <button className="btn">Создать объявление</button>
+              <button onClick={()=> navigate('./form/found')} className="btn">Создать объявление</button>
             </div>
           </div>
         </div>
