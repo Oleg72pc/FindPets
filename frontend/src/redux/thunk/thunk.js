@@ -2,8 +2,9 @@ import {
   sessionUserAC, 
   logUserAC,
   addUserAC,
-  logoutUserAC } from '../actionCreators/userAC';
-import { initAdvetrsAC } from '../actionCreators/advertsAC';
+  logoutUserAC,
+} from '../actionCreators/userAC';
+import { initAdvetrsAC, addAdvertAC, addPhotoAC } from '../actionCreators/advertsAC';
 
 export const getFetchUserSessionAC = () => {
   return (dispatch) => {
@@ -25,6 +26,20 @@ export const postFetchUserLoginAC = (payload) => {
       .then((res) => res.json())
       .then((data) => {
         dispatch(logUserAC(data));
+      });
+  }
+}
+
+export const postFetchAddAdventAC = (payload) => {
+  return (dispatch) => {
+    fetch('/ad/add', {
+      headers: { 'content-type': 'application/json' },
+      method: 'POST',
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(addAdvertAC(data));
       });
   }
 }
@@ -60,5 +75,18 @@ export const getFetchLogoutUserAC = () => {
       .then((data) => {
         dispatch(logoutUserAC(data));
       });
+  }
+}
+
+export const addPhoto = (payload) => {
+  return (dispatch) => {
+    fetch("/ad", {
+      method: "POST",
+      body: payload,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(addPhotoAC(data)
+      )});
   }
 }

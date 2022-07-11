@@ -29,7 +29,7 @@ function App(props) {
             <Route path="/adverts/:advertId" element={<Advert />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registration" element={<Registration />} />
-            <Route path="/form" element={<AdventForm />} />
+            <Route path="/form/:name" element={<AdventForm />} />
           </Routes>
           <Footer />
         </BrowserRouter>
