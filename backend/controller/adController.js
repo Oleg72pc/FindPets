@@ -1,13 +1,16 @@
 const {
   Ad,
   User,
+  Comment,
 } = require('../db/models');
 const storageFileupload = require('../storageFileupload');
+
 
 const getAd = async (req, res) => {
   const AdCarts = await Ad.findAll();
   res.send(AdCarts);
 };
+
 
 const postPhoto = async (req, res) => {
   try {
@@ -79,10 +82,32 @@ const addAdvent = async (req, res) => {
     console.log(err.message);
     res.status(500).end();
   }
+
+const getAdSingl = async (req, res) => {
+  const { advertId } = req.params;
+  const AdCart = await Ad.findOne({
+    where: {
+      id: advertId,
+    },
+  });
+  res.send(AdCart);
+};
+
+const postAdComment = async (req, res) => {
+  const { text, userId, adId } = req.body;
+  const comment = await Comment.create({
+    text,
+    userId,
+    adId,
+  });
+  res.status(200).send(comment);
+
 };
 
 module.exports = {
   getAd,
   postPhoto,
   addAdvent,
+  getAdSingl,
+  postAdComment,
 };
