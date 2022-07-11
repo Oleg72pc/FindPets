@@ -6,27 +6,28 @@ import { useParams } from 'react-router-dom';
 function Advert(props) {
 
   const { advertId } = useParams();
-  const [data, setData] = React.useState();
-  React.useEffect(() => {
-    fetch(`/ad/${advertId}`)
-      .then((res) => res.json())
-      .then((result) => {
-        setData(result);
-      });
-  }, [advertId]);
+  // const [data, setData] = React.useState();
+  // React.useEffect(() => {
+  //   fetch(`/ad/${advertId}`)
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       setData(result);
+  //     });
+  // }, [advertId]);
  
     const data = useSelector((state) => state.advertRed.adverts);
     const [comment, setComment] = React.useState("");
     
     // eslint-disable-next-line eqeqeq
     const ad = React.useMemo(()=>data.find((el)=>el.id == advertId), [data, advertId])
+  
 
     const handleChangeComment = (evt) => {
       setComment(evt.currentTarget.value)
     }
 
     const handleSendComment = () => {
-      fetch('http://localhost:4000/ad/comment', {
+      fetch('/ad/comment', {
         method: 'POST',
         body: JSON.stringify({
           text: comment,
