@@ -5,6 +5,17 @@ const getAd = async (req, res) => {
   res.send(AdCarts);
 };
 
+const getAdSingl = async (req, res) => {
+  const { advertId } = req.params;
+  const AdCart = await Ad.findOne({
+    where: {
+      id: advertId,
+    },
+  });
+  res.send(AdCart);
+};
+
 module.exports = {
   getAd,
+  getAdSingl,
 };
