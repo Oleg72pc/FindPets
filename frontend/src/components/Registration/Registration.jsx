@@ -20,11 +20,11 @@ function Registration(props) {
   };
   return (
     <form onSubmit={addUser} className="login-wrapper">
-      <div class="container1">
-        <div class="service-down1">
-          <div class="box1">
+      <div className="container1">
+        <div className="service-down1">
+          <div className="box1">
             <h1>Регистрация</h1>
-            <div class="box-back1">
+            <div className="box-back1">
               <img className="team1-log" src="img/article.webp" alt="" />
             </div>
             <input

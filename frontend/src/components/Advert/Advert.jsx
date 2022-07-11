@@ -6,7 +6,7 @@ function Advert(props) {
     const {advertId} = useParams();
   const [data, setData] = React.useState();
   React.useEffect(() => {
-    fetch('http://localhost:4000/ad')
+    fetch(`/ad/${advertId}`)
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
@@ -15,20 +15,16 @@ function Advert(props) {
   }, []);
   return (
     <div className='contentAdvert'>
-        <div>
-            param {advertId}
-        </div>
       {data ? (
-        data.map((item) => (
-          <div key={item.id} className="card">
-            <img src={item.photo} alt="dog" />
+          <div key={data.id} className="card">
+            <img style={{width: '200px'}} src={data.photo} alt="dog" />
             <div className="container">
-              <div>{item.title}</div>
-              <div>{item.description}</div>
-              <div>{item.location}</div>
+              <div>{data.title}</div>
+              <div>{data.description}</div>
+              <div>{data.location}</div>
             </div>
           </div>
-        ))
+  
       ) : (
         <div>no data</div>
       )}

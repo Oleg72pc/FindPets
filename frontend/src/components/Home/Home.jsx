@@ -9,7 +9,7 @@ function Home(props) {
           {/* <div className="row"> */}
           <div className="col-lg-6">
             <h1 className="display-5">
-              ПОИСК <p class="forrad">ПРОПАВШИХ </p>
+              ПОИСК <p className="forrad">ПРОПАВШИХ </p>
               
               ДОМАШНИХ ЖИВОТНЫХ
             </h1>
@@ -19,19 +19,19 @@ function Home(props) {
         {/* </div> */}
       </section>
 
-      <section class="services">
-        <div class="container">
-          <div class="service-down">
-            <div class="box">
-              <div class="box-back">
+      <section className="services">
+        <div className="container">
+          <div className="service-down">
+            <div className="box">
+              <div className="box-back">
                 <img className="team" src="img/team.webp" alt="" />
               </div>
               <h2>Мой питомец потерялся</h2>
               <p>Создать объявление о пропаже питомца, чтобы все увидели</p>
               <button className="btn">Создать объявление</button>
             </div>
-            <div class="box">
-              <div class="box-back">
+            <div className="box">
+              <div className="box-back">
                 <img className="team" src="img/team2.webp" alt="" />
               </div>
               <h2>Найден чужой питомец</h2>

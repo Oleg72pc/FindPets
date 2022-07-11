@@ -16,7 +16,7 @@ function Adverts(props) {
         data.map((item) => (
           <Link key={item.id} to={`${item.id}`} > 
           <div key={item.id} className="card">
-            <img src={item.photo} alt="dog" />
+            <img style={{width: '200px'}} src={item.photo} alt="dog" />
             <div className="container">
               <div>{item.title}</div>
               <div>{item.description}</div>
