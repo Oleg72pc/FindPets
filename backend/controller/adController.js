@@ -7,7 +7,6 @@ const getAd = async (req, res) => {
 
 const getAdSingl = async (req, res) => {
   const { advertId } = req.params;
-  console.log(advertId);
   const AdCart = await Ad.findOne({
     where: {
       id: advertId,

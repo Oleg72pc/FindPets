@@ -9,10 +9,9 @@ function Advert(props) {
     fetch(`/ad/${advertId}`)
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         setData(result);
       });
-  }, []);
+  }, [advertId]);
   return (
     <div className='contentAdvert'>
       {data ? (
