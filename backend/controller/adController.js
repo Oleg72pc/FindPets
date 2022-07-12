@@ -102,10 +102,16 @@ const postAdComment = async (req, res) => {
   res.status(200).send(comment);
 };
 
+const getComments = async (req, res) => {
+  const comments = await Comment.findAll();
+  res.send(comments);
+};
+
 module.exports = {
   getAd,
   postPhoto,
   addAdvent,
   getAdSingl,
   postAdComment,
+  getComments,
 };

@@ -14,34 +14,34 @@ function Advert(props) {
   //       setData(result);
   //     });
   // }, [advertId]);
- 
-    const data = useSelector((state) => state.advertRed.adverts);
-    const [comment, setComment] = React.useState("");
-    
-    // eslint-disable-next-line eqeqeq
-    const ad = React.useMemo(()=>data.find((el)=>el.id == advertId), [data, advertId])
-  
 
-    const handleChangeComment = (evt) => {
-      setComment(evt.currentTarget.value)
-    }
+  const data = useSelector((state) => state.advertRed.adverts);
+  const [comment, setComment] = React.useState("");
 
-    const handleSendComment = () => {
-      fetch('/ad/comment', {
-        method: 'POST',
-        body: JSON.stringify({
-          text: comment,
-          adId: advertId,
-          userId: 1,
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
-        .then((data) => data.json())
-        .then((res) => console.log(res));
-    }
-  
+  // eslint-disable-next-line eqeqeq
+  const ad = React.useMemo(() => data.find((el) => el.id == advertId), [data, advertId])
+
+
+  const handleChangeComment = (evt) => {
+    setComment(evt.currentTarget.value)
+  }
+
+  const handleSendComment = () => {
+    fetch('/ad/comment', {
+      method: 'POST',
+      body: JSON.stringify({
+        text: comment,
+        adId: advertId,
+        userId: 1,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+      .then((data) => data.json())
+      .then((res) => console.log(res));
+  }
+
   return (
     <div className="contentAdvert">
       {ad ? (
@@ -53,9 +53,9 @@ function Advert(props) {
             <div>{ad.location}</div>
             <input value={comment} onChange={handleChangeComment} />
             <button onClick={handleSendComment}>Комментировать</button>
-            {/* {ad.comment && comment.map(item)=>(
-              <div key={item.id}>{item.text}</div>
-            )} */}
+            {ad.comment && comment.map(item => (
+            <div key={item.id}>{item.text}</div>
+            ))}
           </div>
         </div>
       ) : (
