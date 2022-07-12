@@ -36,6 +36,7 @@ async function init(){
     i++;
   });
 
+  // eslint-disable-next-line no-unused-vars
   let count = 0;
   // После того, как поиск вернул результат, вызывается callback-функция
   geocoder.forEach((geo) => {

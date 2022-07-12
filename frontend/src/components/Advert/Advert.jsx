@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addCommetnAC } from '../../redux/actionCreators/advertsAC';
-import { postFetchaddComment } from '../../redux/thunk/thunk';
+import { getFetchInitAdvertsAC, postFetchaddComment } from '../../redux/thunk/thunk';
 
 
 function Advert(props) {
   const { advertId } = useParams();
+  // const [data, setData] = React.useState();
+  // React.useEffect(() => {
+  //   fetch(`/ad/${advertId}`)
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       setData(result);
+  //     });
+  // }, [advertId]);
+  
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getFetchInitAdvertsAC());
+  }, [dispatch]);
+
+  
   const { comments, adverts } = useSelector((state) => state.advertRed);
   const [comment, setComment] = React.useState('');
 

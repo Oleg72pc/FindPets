@@ -4,9 +4,7 @@ const { sequelize } = require('./db/models');
 
 // require routes
 const authRouter = require('./routes/auth.routes');
-
 const infoRouter = require('./routes/getInfo.routes');
-
 const adRouter = require('./routes/ad.routes');
 
 const app = express();
