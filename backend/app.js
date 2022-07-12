@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const config = require('./config/index');
 const { sequelize } = require('./db/models');
 
@@ -15,6 +16,10 @@ config(app);
 app.use('/auth', authRouter);
 app.use('/getAnimalInfo', infoRouter);
 app.use('/ad', adRouter);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
 
 app.listen(PORT, async () => {
   console.log(`S E R V E R S T A R T E D A T ${PORT} P O R T`);
