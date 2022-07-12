@@ -7,6 +7,7 @@ const { sequelize } = require('./db/models');
 const authRouter = require('./routes/auth.routes');
 const infoRouter = require('./routes/getInfo.routes');
 const adRouter = require('./routes/ad.routes');
+const userRouter = require('./routes/user.routes');
 
 const app = express();
 const PORT = process.env.PORT ?? 4000;
@@ -16,6 +17,7 @@ config(app);
 app.use('/auth', authRouter);
 app.use('/getAnimalInfo', infoRouter);
 app.use('/ad', adRouter);
+app.use('/user', userRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/build/index.html'));

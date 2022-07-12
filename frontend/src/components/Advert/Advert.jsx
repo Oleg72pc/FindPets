@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Comment from '../Comment/Comment';
 import { addCommetnAC } from '../../redux/actionCreators/advertsAC';
 import { getFetchInitAdvertsAC, postFetchaddComment } from '../../redux/thunk/thunk';
 
@@ -23,6 +24,7 @@ function Advert(props) {
 
   
   const { comments, adverts } = useSelector((state) => state.advertRed);
+  const { user } = useSelector((state) => state.userRed);
   const [comment, setComment] = React.useState('');
 
   React.useEffect(() => {
@@ -39,7 +41,6 @@ function Advert(props) {
     
   const handleChangeComment = (evt) => {
     setComment(evt.currentTarget.value)
-    
   }
 
     const handleSendComment = () => {
@@ -48,14 +49,15 @@ function Advert(props) {
         body: JSON.stringify({
           text: comment,
           adId: advertId,
-          userId: 1,
+          userId: user?.id ? user.id : null,
         }),
         headers: {
           'Content-Type': 'application/json',
         },
       })
         .then((data) => data.json())
-        .then((res) => dispatch(addCommetnAC(res)));
+        .then((res) => dispatch(addCommetnAC(res)))
+        .then(()=>{setComment('')})
     }
 
   return (
@@ -67,10 +69,11 @@ function Advert(props) {
             <div>{ad.title}</div>
             <div>{ad.description}</div>
             <div>{ad.location}</div>
+            <div>{ad.createdAt}</div>
             <input value={comment} onChange={handleChangeComment} />
             <button onClick={handleSendComment}>Комментировать</button>
             {comments.length > 0 &&
-              comments.map((item) => <div key={item.id}>{item.text}</div>)}
+              comments.map((item) => <Comment comment={item}/>)}
           </div>
         </div>
       ) : (

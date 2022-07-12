@@ -14,45 +14,46 @@ module.exports = (sequelize, DataTypes) => {
       Comment.Ad = Comment.belongsTo(Ad, { foreignKey: 'adId' });
     }
   }
-  Comment.init({
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: DataTypes.INTEGER,
-    },
-    text: {
-      allowNull: false,
-      type: DataTypes.TEXT,
-    },
-    userId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Users',
-        key: 'id',
+  Comment.init(
+    {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
       },
-
-    },
-    adId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Ads',
-        key: 'id',
+      text: {
+        allowNull: false,
+        type: DataTypes.TEXT,
       },
-
+      userId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
+      },
+      adId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'Ads',
+          key: 'id',
+        },
+      },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
     },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-    },
-  }, {
-    sequelize,
-    modelName: 'Comment',
-    tableName: 'Comments',
-  });
+    {
+      sequelize,
+      modelName: 'Comment',
+      tableName: 'Comments',
+    }
+  );
   return Comment;
 };
