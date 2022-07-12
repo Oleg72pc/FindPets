@@ -75,67 +75,6 @@ function Navbar(props) {
       </div>
     </section>
 
-    // <nav classNameName="container">
-    //   <div classNameName="navig">
-    //     {user ? (
-    //       <div classNameName="menu" id="navbarNav">
-    //         <ul classNameName="nav_ul">
-    //           {/* <li classNameName="logo">
-    //             <Link to="/" classNameName="logo">
-    //               Logo
-    //             </Link>
-    //           </li> */}
-    //           <li classNameName="nav_li">
-    //             <Link to="/" classNameName="nav-link">
-    //               Главная
-    //             </Link>
-    //           </li>
-    //           <li classNameName="nav-item">
-    //             <Link to="/adverts" classNameName="nav-link" >
-    //               Объявления
-    //             </Link>
-    //           </li>
-    //           <li classNameName="nav_li">
-    //             <button classNameName="nav-link" onClick={hendlerLogout}>
-    //               Выйти, {user.userName}
-    //             </button>
-    //           </li>
-    //         </ul>
-    //       </div>
-    //     ) : (
-
-    //       <div classNameName="menu" id="navbarNav">
-    //         <ul classNameName="nav_ul">
-    //           <li classNameName="nav_li">
-    //             <Link to="/" classNameName="navbar-brand">
-    //               Logo
-    //             </Link>
-    //           </li>
-    //           <li classNameName="nav_li">
-    //             <Link to="/" classNameName="nav-link">
-    //               Главная
-    //             </Link>
-    //           </li>
-    //           <li classNameName="nav-item">
-    //             <Link to="/adverts" classNameName="nav-link" >
-    //               Объявления
-    //             </Link>
-    //           </li>
-    //           <li classNameName="nav_li">
-    //             <Link to="/login" classNameName="nav-link">
-    //               Логин
-    //             </Link>
-    //           </li>
-    //           <li classNameName="nav_li">
-    //             <Link to="/registration" classNameName="nav-link">
-    //               Регистрация
-    //             </Link>
-    //           </li>
-    //         </ul>
-    //       </div>
-    //     )}
-    //   </div>
-    // </nav>
   );
 }
 
