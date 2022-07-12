@@ -6,7 +6,7 @@ function Comment(props) {
   React.useEffect(() => {
     if (comment.userId) {
       console.log(comment.userId)
-      fetch(`http://localhost:4000/user/${comment.userId}`)
+      fetch(`/user/${comment.userId}`)
         .then((data) => data.json())
         .then((res) => setUser(res));
     }
