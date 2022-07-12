@@ -4,7 +4,7 @@ import {
   addUserAC,
   logoutUserAC,
 } from '../actionCreators/userAC';
-import { initAdvetrsAC, addAdvertAC, addPhotoAC } from '../actionCreators/advertsAC';
+import { initAdvetrsAC, addAdvertAC, addPhotoAC, initCommetnAC } from '../actionCreators/advertsAC';
 
 export const getFetchUserSessionAC = () => {
   return (dispatch) => {
@@ -88,5 +88,16 @@ export const addPhoto = (payload) => {
       .then((data) => {
         dispatch(addPhotoAC(data)
       )});
+  }
+}
+
+export const postFetchaddComment = (payload) => {
+  return (dispatch) => {
+
+    fetch(`/ad/${payload}`)
+      .then((res) => res.json())
+      .then((result) => {
+        dispatch(initCommetnAC(result));
+      });
   }
 }
