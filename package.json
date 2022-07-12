@@ -1,0 +1,22 @@
+{
+  "name": "findpets",
+  "version": "1.0.0",
+  "description": "Pet search service",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cd backend && npm i && npx sequelize db:migrate && cd ../frontend && npm i && DISABLE_ESLINT_PLUGIN=true npm run build",
+    "start": "cd backend && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oleg72pc/FindPets.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Oleg72pc/FindPets/issues"
+  },
+  "homepage": "https://github.com/Oleg72pc/FindPets#readme"
+}

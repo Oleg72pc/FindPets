@@ -21,6 +21,7 @@ const config = (app) => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(express.static(path.join(__dirname, '../photo')));
+  app.use(express.static(path.join(__dirname, '../../frontend/build')));
   app.use(logger('dev'));
   app.use(fileUpload());
 
