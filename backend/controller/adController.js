@@ -82,15 +82,16 @@ const addAdvent = async (req, res) => {
     console.log(err.message);
     res.status(500).end();
   }
+}
 
 const getAdSingl = async (req, res) => {
   const { advertId } = req.params;
-  const AdCart = await Ad.findOne({
+  const coments = await Comment.findAll({
     where: {
-      id: advertId,
+      adId: advertId,
     },
   });
-  res.send(AdCart);
+  res.send(coments);
 };
 
 const postAdComment = async (req, res) => {
