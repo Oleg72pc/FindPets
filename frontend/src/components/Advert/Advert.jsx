@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getFetchInitAdvertsAC } from '../../redux/thunk/thunk';
+import { addCommetnAC } from '../../redux/actionCreators/advertsAC';
+import { getFetchInitAdvertsAC, postFetchaddComment } from '../../redux/thunk/thunk';
+
 
 function Advert(props) {
-
   const { advertId } = useParams();
   // const [data, setData] = React.useState();
   // React.useEffect(() => {
@@ -20,31 +21,42 @@ function Advert(props) {
     dispatch(getFetchInitAdvertsAC());
   }, [dispatch]);
 
-  const data = useSelector((state) => state.advertRed.adverts);
-  const [comment, setComment] = React.useState("");
-  // eslint-disable-next-line eqeqeq
-  const ad = React.useMemo(() => data.find((el) => el.id == advertId), [data, advertId])
+  
+  const { comments, adverts } = useSelector((state) => state.advertRed);
+  const [comment, setComment] = React.useState('');
 
+  React.useEffect(() => {
+    dispatch(postFetchaddComment(advertId));
+  }, [dispatch, advertId]);
+  
+  console.log(comments)
 
+  const ad = React.useMemo(
+    // eslint-disable-next-line eqeqeq
+    () => adverts.find((el) => el.id == advertId),
+    [adverts, advertId]
+  );
+    
   const handleChangeComment = (evt) => {
     setComment(evt.currentTarget.value)
+    
   }
 
-  const handleSendComment = () => {
-    fetch('/ad/comment', {
-      method: 'POST',
-      body: JSON.stringify({
-        text: comment,
-        adId: advertId,
-        userId: 1,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    })
-      .then((data) => data.json())
-      .then((res) => console.log(res));
-  }
+    const handleSendComment = () => {
+      fetch('http://localhost:4000/ad/comment', {
+        method: 'POST',
+        body: JSON.stringify({
+          text: comment,
+          adId: advertId,
+          userId: 1,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((data) => data.json())
+        .then((res) => dispatch(addCommetnAC(res)));
+    }
 
   return (
     <div className="contentAdvert">
@@ -57,9 +69,8 @@ function Advert(props) {
             <div>{ad.location}</div>
             <input value={comment} onChange={handleChangeComment} />
             <button onClick={handleSendComment}>Комментировать</button>
-            {ad.comment && comment.map(item => (
-            <div key={item.id}>{item.text}</div>
-            ))}
+            {comments.length > 0 &&
+              comments.map((item) => <div key={item.id}>{item.text}</div>)}
           </div>
         </div>
       ) : (

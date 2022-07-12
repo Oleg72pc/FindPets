@@ -23,7 +23,7 @@ font-family: 'Roboto', sans-serif; */
     transform: translateY(5rem);
     transform: translateX(5rem);
     width: 40rem;
-    /* overflow: hidden; */
+   
 }
 
 .dog img {
@@ -120,7 +120,6 @@ font-family: 'Roboto', sans-serif; */
     padding: 40px 15px 45px 15px;
     gap: 30px;
     transition: 0.3s ease-in-out;
-    overflow: hidden;
 }
 
 .box:hover {
