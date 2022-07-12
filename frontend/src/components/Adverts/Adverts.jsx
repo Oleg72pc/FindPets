@@ -48,20 +48,16 @@ function Adverts(props) {
           <div className="conteinerforad">
             {data ? (
               data.map((item) => (
-                <Link key={item.id} to={`${item.id}`}>
-                  <div key={item.id} className="cardad">
-                    <img className="sizeimgcards" src={item.photo} alt="dog" />
+                <div key={item.id} className='advertSingl'>
+                    <Link  to={`${item.id}`}>
+                    <div><img className="sizeimgcards" src={item.photo} alt="dog" /></div>
                     <div className="containerad">
                       <div className="titlead">{item.title}</div>
-                      <div>
-                        <p className="nametitle">Описание:</p> {item.description}
-                      </div>
-                      <div>
-                        <p className="nametitle">Локация:</p> {item.location}
-                      </div>
+                      <div className="nametitle">Описание: {item.description} </div>
+                      <div className="nametitle"> Локация: {item.location}</div>
                     </div>
-                  </div>
-                </Link>
+                    </Link>
+                </div>
               ))
             ) : (
               <div>no data</div>

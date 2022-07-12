@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
 import { getFetchLogoutUserAC } from '../../redux/thunk/thunk';
 import './Navbar.css';
+import logo from '../../img/logo7.png'
 
 function Navbar(props) {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ function Navbar(props) {
         <div className="logo-img">
           <Link to="/" className="nav-logo">
             <p className="nav-h1">
-              <img src="img/logo7.png" alt="r" /> FindPets
+              <img src={logo} className='logo' alt="logo" /> FindPets
             </p>{' '}
           </Link>
         </div>
