@@ -5,12 +5,10 @@ const {
 } = require('../db/models');
 const storageFileupload = require('../storageFileupload');
 
-
 const getAd = async (req, res) => {
   const AdCarts = await Ad.findAll();
   res.send(AdCarts);
 };
-
 
 const postPhoto = async (req, res) => {
   try {
@@ -20,7 +18,7 @@ const postPhoto = async (req, res) => {
 
     res.json(arrUrl);
   } catch {
-    console.error;
+    console.error('err');
   }
 };
 
@@ -82,7 +80,8 @@ const addAdvent = async (req, res) => {
     console.log(err.message);
     res.status(500).end();
   }
-}
+};
+
 
 const getAdSingl = async (req, res) => {
   const { advertId } = req.params;
@@ -102,7 +101,11 @@ const postAdComment = async (req, res) => {
     adId,
   });
   res.status(200).send(comment);
+};
 
+const getComments = async (req, res) => {
+  const comments = await Comment.findAll();
+  res.send(comments);
 };
 
 module.exports = {
@@ -111,4 +114,5 @@ module.exports = {
   addAdvent,
   getAdSingl,
   postAdComment,
+  getComments,
 };

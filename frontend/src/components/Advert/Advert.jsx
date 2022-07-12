@@ -43,7 +43,7 @@ function Advert(props) {
         .then((data) => data.json())
         .then((res) => dispatch(addCommetnAC(res)));
     }
-  
+
   return (
     <div className="contentAdvert">
       {ad ? (

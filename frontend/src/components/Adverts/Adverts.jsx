@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getFetchInitAdvertsAC } from '../../redux/thunk/thunk';
+import init from '../../apimap'
 import './Adverts.css';
 
 function Adverts(props) {
@@ -11,6 +12,7 @@ function Adverts(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getFetchInitAdvertsAC());
+    window.ymaps.ready(init);
   }, [dispatch]);
 
   return (
@@ -31,9 +33,9 @@ function Adverts(props) {
             </div>
             <div>
               <p>Кого вы ищете</p>
-              <input type="radio" placeholder="Введите город" /> <button>кошку</button>
-              <input type="radio" placeholder="Введите город" /> <button>собаку</button>
-              <input type="radio" placeholder="Введите город" /> <button>другое</button>
+              <input type="radio" name='type' value='cat' /> <label>кошку</label>
+              <input type="radio" name='type' value='dog' /> <label>собаку</label>
+              <input type="radio" name='type' value='other' /> <label>другое</label>
             </div>
             <div>
               <p>Тип объявления</p>
@@ -46,20 +48,16 @@ function Adverts(props) {
           <div className="conteinerforad">
             {data ? (
               data.map((item) => (
-                <Link key={item.id} to={`${item.id}`}>
-                  <div key={item.id} className="cardad">
-                    <img className="sizeimgcards" src={item.photo} alt="dog" />
+                <div key={item.id} className='advertSingl'>
+                    <Link  to={`${item.id}`}>
+                    <div><img className="sizeimgcards" src={item.photo} alt="dog" /></div>
                     <div className="containerad">
                       <div className="titlead">{item.title}</div>
-                      <div>
-                        <p className="nametitle">Описание:</p> {item.description}
-                      </div>
-                      <div>
-                        <p className="nametitle">Локация:</p> {item.location}
-                      </div>
+                      <div className="nametitle">Описание: {item.description} </div>
+                      <div className="nametitle"> Локация: {item.location}</div>
                     </div>
-                  </div>
-                </Link>
+                    </Link>
+                </div>
               ))
             ) : (
               <div>no data</div>
