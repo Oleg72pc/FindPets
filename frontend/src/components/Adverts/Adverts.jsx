@@ -15,6 +15,8 @@ function Adverts(props) {
     window.ymaps.ready(init);
   }, [dispatch]);
 
+  console.log(data);
+
   return (
     <>
       <section className="grid-12">

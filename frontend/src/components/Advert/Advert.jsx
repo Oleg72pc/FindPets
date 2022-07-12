@@ -1,7 +1,7 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-
+import { getFetchInitAdvertsAC } from '../../redux/thunk/thunk';
 
 function Advert(props) {
 
@@ -14,10 +14,14 @@ function Advert(props) {
   //       setData(result);
   //     });
   // }, [advertId]);
+  
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getFetchInitAdvertsAC());
+  }, [dispatch]);
 
   const data = useSelector((state) => state.advertRed.adverts);
   const [comment, setComment] = React.useState("");
-
   // eslint-disable-next-line eqeqeq
   const ad = React.useMemo(() => data.find((el) => el.id == advertId), [data, advertId])
 
