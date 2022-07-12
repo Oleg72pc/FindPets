@@ -1,8 +1,5 @@
-const {
-  Ad,
-  User,
-  Comment,
-} = require('../db/models');
+const bcrypt = require('bcrypt');
+const { Ad, User, Comment } = require('../db/models');
 const storageFileupload = require('../storageFileupload');
 
 const getAd = async (req, res) => {
@@ -44,7 +41,7 @@ const addAdvent = async (req, res) => {
       const newUser = await User.create({
         userName: nameUser,
         phoneNumber: phone,
-        password,
+        password: await bcrypt.hash(password, 10),
         isAdmin: false,
       });
       newAdvent = await Ad.create({
@@ -81,7 +78,6 @@ const addAdvent = async (req, res) => {
     res.status(500).end();
   }
 };
-
 
 const getAdSingl = async (req, res) => {
   const { advertId } = req.params;
