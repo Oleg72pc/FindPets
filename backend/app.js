@@ -6,6 +6,7 @@ const { sequelize } = require('./db/models');
 const authRouter = require('./routes/auth.routes');
 const infoRouter = require('./routes/getInfo.routes');
 const adRouter = require('./routes/ad.routes');
+const userRouter = require('./routes/user.routes');
 
 const app = express();
 const PORT = process.env.PORT ?? 4000;
@@ -15,6 +16,7 @@ config(app);
 app.use('/auth', authRouter);
 app.use('/getAnimalInfo', infoRouter);
 app.use('/ad', adRouter);
+app.use('/user', userRouter);
 
 app.listen(PORT, async () => {
   console.log(`S E R V E R S T A R T E D A T ${PORT} P O R T`);
