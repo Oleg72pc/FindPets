@@ -43,7 +43,7 @@ function Advert(props) {
   }
 
     const handleSendComment = () => {
-      fetch('http://localhost:4000/ad/comment', {
+      fetch('/ad/comment', {
         method: 'POST',
         body: JSON.stringify({
           text: comment,
