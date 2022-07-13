@@ -47,7 +47,7 @@ function Home(props) {
               <div className="col s12 m6">
                 <div className="card">
                   <div className="card-image">
-                    <img src="img/catdog.png" alt="1" />
+                    <img className='imgHome' src="img/dogcat.png" alt="1" />
                     <button
                       className="btn waves-effect waves-light heig"
                       onClick={() => navigate('./form/found')}
