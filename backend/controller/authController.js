@@ -12,53 +12,63 @@ async function sessionUser(req, res) {
       },
     });
   } else {
-    console.log('not user');
     res.send({ user: null });
   }
 }
 
 async function createUser(req, res) {
   const { userName, password, phoneNumber } = req.body;
-  try {
-    const user = await User.create({
-      userName,
-      password: await bcrypt.hash(password, 10),
-      isAdmin: false,
-      phoneNumber,
-    });
-    req.session.user = user;
-    res.send(user);
-  } catch (err) {
-    res.send(err.message);
+  const existingUser = await User.findOne({ where: { phoneNumber } });
+  // проверяем есть ли уже такой пользователь в БД
+  if (existingUser) {
+    res.json('* Пользователь с таким телефоном уже есть *');
+    return;
   }
+  if (!phoneNumber.match(/^((8|\+7)[ \- ]?)?(\(?\d{3}\)?[ \- ]?)?[\d\- ]{7,10}$/)) {
+    res.json('* Неверный формат телефона *');
+    return;
+  }
+  if (!password.match(/(?=.*[0-9])(?=.*[a-z])[0-9a-z]{6,}/)) {
+    res.json('* Пароль должен быть от 6 символов (строчные символы и минимум одна цифра) *');
+    return;
+  }
+  if (userName.length < 3) {
+    res.json('* Логин должен быть минимум 3 символа *');
+    return;
+  }
+
+  const user = await User.create({
+    userName,
+    password: await bcrypt.hash(password, 10),
+    isAdmin: false,
+    phoneNumber,
+  });
+  const newUser = {
+    id: user.id,
+    userName: user.userName,
+    isAdmin: user.isAdmin,
+    phoneNumber: user.phoneNumber,
+  };
+  req.session.user = newUser;
+  res.json(newUser);
 }
 
 async function loginUser(req, res) {
   const { phoneNumber, password } = req.body;
-  let user;
-  try {
-    user = await User.findOne({
-      where: {
-        phoneNumber,
-      },
-    });
-  } catch (err) {
-    res.send(err.message);
+  const existingUser = await User.findOne({ where: { phoneNumber } });
+  // проверяем, что такой пользователь есть в БД и пароли совпадают
+  if (existingUser && await bcrypt.compare(password, existingUser.password)) {
+    const user = {
+      id: existingUser.id,
+      userName: existingUser.userName,
+      phoneNumber: existingUser.phoneNumber,
+      isAdmin: existingUser.isAdmin,
+    };
+    req.session.user = user;
+    res.json(user);
+  } else {
+    res.json('* Неверный телефон или пароль *');
   }
-  if (!user) {
-    res.status(403);
-  }
-  let isSame;
-  try {
-    isSame = await bcrypt.compare(password, user.password);
-  } catch (err) {
-    res.status(403);
-  }
-  if (!isSame) {
-    res.status(403);
-  }
-  req.session.user = user;
-  res.send(user);
 }
 
 async function logoutUser(req, res) {

@@ -1,12 +1,12 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postFetchUserRegistrationAC } from '../../redux/thunk/thunk';
 
 function Registration(props) {
   const dispatch = useDispatch();
   const navigation = useNavigate();
-
+  const {errorREG, statusREG} = useSelector((state) => state.userRed);
   const addUser = (e) => {
     e.preventDefault();
 
@@ -16,8 +16,13 @@ function Registration(props) {
       password: e.target.password.value,
     };
     dispatch(postFetchUserRegistrationAC(data));
-    navigation('/');
   };
+  useEffect(()=>{
+    if(statusREG){
+        navigation('/');
+    } 
+  },[statusREG, navigation]);
+
   return (
     <form onSubmit={addUser} className="login-wrapper">
       <div className="container1">
@@ -27,6 +32,7 @@ function Registration(props) {
             <div className="box-back1">
               <img className="team1-log" src="img/article.webp" alt="" />
             </div>
+            {errorREG && <div className='error-massage'>{errorREG}</div>}
             <input
               className="phoneNumber"
               name="userName"
