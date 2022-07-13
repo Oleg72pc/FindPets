@@ -27,27 +27,27 @@ function Registration(props) {
     <form onSubmit={addUser} className="login-wrapper">
       <div className="contlog">
         <h3 className="log">Регистрация</h3>
+        {errorREG && <div className='error-massage'>{errorREG}</div>}
         <div className="container">
           <div className="row">
             <div className="input-field col s12 waves-light">
               <i class="material-icons prefix">account_box</i>
               <input type="text" name="userName" />
-              <label for="userName">Логин</label>
+              <label htmlFor="userName">Логин</label>
             </div>
-            {errorREG && <div className="error-massage">{errorREG}</div>}
           </div>
           <div className="row">
             <div className="input-field col s12 waves-light">
               <i class="material-icons prefix">call</i>
               <input type="text" name="phoneNumber" />
-              <label for="phoneNumber">Телефон</label>
+              <label htmlFor="phoneNumber">Телефон</label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s12">
               <i class="material-icons prefix">enhanced_encryption</i>
               <input type="password" name="password" />
-              <label for="password">Пароль</label>
+              <label htmlFor="password">Пароль</label>
             </div>
           </div>
         </div>
