@@ -20,62 +20,83 @@ const postPhoto = async (req, res) => {
 };
 
 const addAdvent = async (req, res) => {
-  try {
-    const {
+  const {
+    title,
+    description,
+    genderAnimal,
+    location,
+    lossTime,
+    spenTime,
+    password,
+    phone,
+    nameUser,
+    cityId,
+    colorId,
+    typeId,
+    photo,
+  } = req.body;
+  let newAdvent = {};
+  if (title === 'Потерялся') {
+    const existingUser = await User.findOne({ where: { phoneNumber: phone } });
+    if (existingUser) {
+      res.json('* Пользователь с таким телефоном уже есть *');
+      return;
+    }
+    if (!phone.match(/^((8|\+7)[ \- ]?)?(\(?\d{3}\)?[ \- ]?)?[\d\- ]{7,10}$/)) {
+      res.json('* Неверный формат телефона *');
+      return;
+    }
+    if (!password.match(/(?=.*[0-9])(?=.*[a-z])[0-9a-z]{6,}/)) {
+      res.json('* Пароль должен быть от 6 символов (строчные символы и минимум одна цифра) *');
+      return;
+    }
+    if (nameUser.length < 3) {
+      res.json('* Логин должен быть минимум 3 символа *');
+      return;
+    }
+    const newUser = await User.create({
+      userName: nameUser,
+      phoneNumber: phone,
+      password: await bcrypt.hash(password, 10),
+      isAdmin: false,
+    });
+    const user = {
+      id: newUser.id,
+      userName: newUser.userName,
+      isAdmin: newUser.isAdmin,
+      phoneNumber: newUser.phoneNumber,
+    };
+    newAdvent = await Ad.create({
       title,
       description,
       genderAnimal,
       location,
       lossTime,
       spenTime,
-      password,
-      phone,
-      nameUser,
+      userId: newUser.id,
       cityId,
       colorId,
       typeId,
       photo,
-    } = req.body;
-    let newAdvent = {};
-    if (title === 'Потерялся') {
-      const newUser = await User.create({
-        userName: nameUser,
-        phoneNumber: phone,
-        password: await bcrypt.hash(password, 10),
-        isAdmin: false,
-      });
-      newAdvent = await Ad.create({
-        title,
-        description,
-        genderAnimal,
-        location,
-        lossTime,
-        spenTime,
-        userId: newUser.id,
-        cityId,
-        colorId,
-        typeId,
-        photo,
-      });
-    } else {
-      newAdvent = await Ad.create({
-        title,
-        description,
-        genderAnimal,
-        location,
-        lossTime,
-        spenTime,
-        userId: null,
-        cityId,
-        colorId,
-        typeId,
-        photo,
-      });
-    }
+    });
+    res.json(user);
+    req.session.user = user;
+  } else {
+    newAdvent = await Ad.create({
+      title,
+      description,
+      genderAnimal,
+      location,
+      lossTime,
+      spenTime,
+      userId: null,
+      cityId,
+      colorId,
+      typeId,
+      photo,
+    });
     res.send(newAdvent);
-  } catch (err) {
-    console.log(err.message);
-    res.status(500).end();
+    // res.status(500).end();
   }
 };
 

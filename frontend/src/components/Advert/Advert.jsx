@@ -1,8 +1,9 @@
+/* eslint-disable eqeqeq */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams} from 'react-router-dom';
 import Comment from '../Comment/Comment';
-import { addCommetnAC, deleteAdvertAC, deleteCommetnAC } from '../../redux/actionCreators/advertsAC';
+import { addCommetnAC, deleteAdvertAC } from '../../redux/actionCreators/advertsAC';
 import { getFetchInitAdvertsAC, postFetchaddComment } from '../../redux/thunk/thunk';
 
 
@@ -70,7 +71,6 @@ function Advert(props) {
      
       
     }
-
   return (
     <>
       <div className="contentAdvert">
@@ -81,7 +81,10 @@ function Advert(props) {
               <div>{ad.title}</div>
               <div>{ad.description}</div>
               <div>{ad.location}</div>
-              <div>{ad.createdAt}</div>
+              <div>{
+                  `${new Date(ad.createdAt).getDate()}.${new Date(ad.createdAt).getMonth()}.${new Date(ad.createdAt).getFullYear()}
+                   ${new Date(ad.createdAt).getHours()}:${new Date(ad.createdAt).getMinutes()}`
+              }</div>
               <input value={comment} onChange={handleChangeComment} />
               <button onClick={handleSendComment}>Комментировать</button>
               {user?.isAdmin && <button onClick={handleDeleteAdvert}>удалить нахр</button>}
