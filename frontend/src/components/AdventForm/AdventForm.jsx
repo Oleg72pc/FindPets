@@ -21,55 +21,55 @@ export default function AdventForm() {
   const addAdvent = (e) => {
     let data = {}
     if (name === 'missing' && !user) {
-    if(photo){
-      data = {
-        title: 'Потерялся',
-        description: e.target.description.value,
-        genderAnimal: e.target.gender.value,
-        location: e.target.address.value,
-        lossTime: e.target.dateTime.value,
-        spenTime: null,
-        password: e.target.password.value,
-        phone: e.target.phone.value,
-        nameUser: e.target.nameUser.value,
-        cityId: e.target.city.value,
-        colorId: e.target.color.value,
-        typeId: e.target.animal.value,
-        photo
-      } 
-    } else {
-      data = {
-        title: 'Потерялся',
-        description: e.target.description.value,
-        genderAnimal: e.target.gender.value,
-        location: e.target.address.value,
-        lossTime: e.target.dateTime.value,
-        spenTime: null,
-        password: e.target.password.value,
-        phone: e.target.phone.value,
-        nameUser: e.target.nameUser.value,
-        cityId: e.target.city.value,
-        colorId: e.target.color.value,
-        typeId: e.target.animal.value,
-        }  
-    }
-    } else {
-      if(photo){
-      data = {
-        title: 'Нашелся',
-        description: e.target.description.value,
-        genderAnimal: null,
-        location: e.target.address.value,
-        lossTime: null,
-        spenTime: e.target.dateTime.value,
-        password: null,
-        phone: null,
-        nameUser: null,
-        cityId: e.target.city.value,
-        colorId: e.target.color.value,
-        typeId: e.target.animal.value,
-        photo
+      if (photo) {
+        data = {
+          title: 'Потерялся',
+          description: e.target.description.value,
+          genderAnimal: e.target.gender.value,
+          location: e.target.address.value,
+          lossTime: e.target.dateTime.value,
+          spenTime: null,
+          password: e.target.password.value,
+          phone: e.target.phone.value,
+          nameUser: e.target.nameUser.value,
+          cityId: e.target.city.value,
+          colorId: e.target.color.value,
+          typeId: e.target.animal.value,
+          photo
+        }
+      } else {
+        data = {
+          title: 'Потерялся',
+          description: e.target.description.value,
+          genderAnimal: e.target.gender.value,
+          location: e.target.address.value,
+          lossTime: e.target.dateTime.value,
+          spenTime: null,
+          password: e.target.password.value,
+          phone: e.target.phone.value,
+          nameUser: e.target.nameUser.value,
+          cityId: e.target.city.value,
+          colorId: e.target.color.value,
+          typeId: e.target.animal.value,
+        }
       }
+    } else {
+      if (photo) {
+        data = {
+          title: 'Нашелся',
+          description: e.target.description.value,
+          genderAnimal: null,
+          location: e.target.address.value,
+          lossTime: null,
+          spenTime: e.target.dateTime.value,
+          password: null,
+          phone: null,
+          nameUser: null,
+          cityId: e.target.city.value,
+          colorId: e.target.color.value,
+          typeId: e.target.animal.value,
+          photo
+        }
       } else {
         data = {
           title: 'Нашелся',
@@ -162,17 +162,18 @@ export default function AdventForm() {
       <div>
         <div>Город</div>
         <select name='city' className="browser-default">
-          {info.city?.map(el => <option key={el.id} value={el.id}>{el.title} </option>)}
+          {info.city?.map(el => <option  key={el.id} value={el.id}>{el.title}</option>)}
         </select>
         {/* <select name='city'>{info.city?.map(el => <option key={el.id} value={el.id}>{el.title} </option>)}</select> */}
       </div>
-      <div>
+      
       {name === 'missing' ? 
-      (<div><p>Пропал по адресу:</p> <input type='text' name='address' /></div>)
+      (<div><p>Пропал по адресу:</p></div> )
         :
-      (<div><p>Нашелся по адресу:</p> <input type='text' name='address' /></div>)
+      (<div><p>Нашелся по адресу:</p> </div>)
       }
-      </div>
+      <div><input type='text' name='address' /></div>
+      
       <div>
         <div><p>Описание</p> <input type='text' name='description' /></div>
       </div>
@@ -180,7 +181,12 @@ export default function AdventForm() {
         <div><p>Загрузить фото</p> <input type="file" multiple onChange={sendFiles} placeholder="Фото" autoComplete="off" /></div>
       </div>
       <div>
-        <div> Дата и время пропажи </div>
+      {name === 'missing' ? 
+      (<div><p> Дата и время пропажи:</p></div>)
+        :
+      (<div><p> Дата и время находки:</p></div>)
+      }
+        {/* <div> Дата и время пропажи </div> */}
         <input defaultValue={state} name='dateTime' />
         <div>
           <p>
@@ -192,21 +198,23 @@ export default function AdventForm() {
         </div>
         {/* <div><p>Сейчас</p> <input onChange={() => setState(new Date())} type='radio' name='date'/></div> */}
       </div>
-      {name === 'missing' && !user && (
-        <>
-          <div>
-            <div><p>Имя владельца</p> <input type='text' name='nameUser' /></div>
-          </div>
-          <div>
-            <div><p>Телефон для связи</p> <input type='text' name='phone' /></div>
-          </div>
-          <div>
-            <div><p>Пароль для регистрации</p> <input type='password' name='password' /></div>
-          </div>
-        </>
-      )}
-      <button type='submit'> Отправить форму </button>
-    </form>
+      {
+    name === 'missing' && !user && (
+      <>
+        <div>
+          <div><p>Имя владельца</p> <input type='text' name='nameUser' /></div>
+        </div>
+        <div>
+          <div><p>Телефон для связи</p> <input type='text' name='phone' /></div>
+        </div>
+        <div>
+          <div><p>Пароль для регистрации</p> <input type='password' name='password' /></div>
+        </div>
+      </>
+    )
+  }
+  <button type='submit'> Отправить форму </button>
+    </form >
 
   )
 }

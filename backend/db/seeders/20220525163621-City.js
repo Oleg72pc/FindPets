@@ -2,14 +2,14 @@ module.exports = {
   async up(queryInterface) {
     await queryInterface.bulkInsert('Cities', [{
 
-      title: 'St. Petersburg',
+      title: 'Санкт-Петербург',
       createdAt: new Date(),
       updatedAt: new Date(),
 
     },
     {
 
-      title: 'Moscow',
+      title: 'Москва',
       createdAt: new Date(),
       updatedAt: new Date(),
 

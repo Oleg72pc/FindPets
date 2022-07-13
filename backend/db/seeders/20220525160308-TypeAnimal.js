@@ -2,17 +2,17 @@ module.exports = {
   async up(queryInterface) {
     await queryInterface.bulkInsert('TypeAnimals', [{
 
-      title: 'Dog',
+      title: 'Собака',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
     {
-      title: 'Cat',
+      title: 'Кошка',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
     {
-      title: 'Tyrannosaurus rex',
+      title: 'Другое',
       createdAt: new Date(),
       updatedAt: new Date(),
     },

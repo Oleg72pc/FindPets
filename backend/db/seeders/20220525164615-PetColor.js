@@ -2,28 +2,28 @@ module.exports = {
   async up(queryInterface) {
     await queryInterface.bulkInsert('PetColors', [
       {
-        title: 'Black',
+        title: 'Черный',
         createdAt: new Date(),
         updatedAt: new Date(),
 
       },
       {
 
-        title: 'White',
+        title: 'Белый',
         createdAt: new Date(),
         updatedAt: new Date(),
 
       },
       {
 
-        title: 'Ginger',
+        title: 'Рыжий',
         createdAt: new Date(),
         updatedAt: new Date(),
 
       },
       {
 
-        title: 'Other',
+        title: 'Другой',
         createdAt: new Date(),
         updatedAt: new Date(),
 
