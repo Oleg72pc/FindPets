@@ -31,18 +31,21 @@ function Registration(props) {
         <div className="container">
           <div className="row">
             <div className="input-field col s12 waves-light">
+              <i class="material-icons prefix">account_box</i>
               <input type="text" name="userName" />
               <label htmlFor="userName">Логин</label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s12 waves-light">
+              <i class="material-icons prefix">call</i>
               <input type="text" name="phoneNumber" />
               <label htmlFor="phoneNumber">Телефон</label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s12">
+              <i class="material-icons prefix">enhanced_encryption</i>
               <input type="password" name="password" />
               <label htmlFor="password">Пароль</label>
             </div>

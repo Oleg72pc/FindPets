@@ -32,12 +32,15 @@ function Login() {
         <div className="container">
           <div className="row">
             <div className="input-field col s12 waves-light">
-              <input type="text" name="phoneNumber" />
-              <label htmlFor="phoneNumber">Телефон</label>
+
+              <i class="material-icons prefix">call</i>
+              <input id="icon_telephone" type="text" name="phoneNumber" />
+              <label for="icon_telephone">Телефон</label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s12">
+              <i class="material-icons prefix">enhanced_encryption</i>
               <input type="password" name="password" />
               <label htmlFor="password">Пароль</label>
             </div>

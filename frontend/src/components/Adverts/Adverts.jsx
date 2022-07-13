@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getFetchInitAdvertsAC } from '../../redux/thunk/thunk';
-import init from '../../apimap'
+import init from '../../apimap';
 import './Adverts.css';
 
 function Adverts(props) {
@@ -17,40 +17,55 @@ function Adverts(props) {
 
   return (
     <>
-      <section className="grid-12">
-        <header className="grid-element bg-gray grid-header">
-          <h6>Объявления</h6>
-          <div className="adline-box">
-            <div>
+      <section className="containerad">
+        <div className="filterad">
+          <h5 className="filterlistFirst">Объявления</h5>
+          <div className="filterlist">
+            <div className="filtercity">
               <p>Где вы ищете</p>
-
               <input
                 className="city"
                 name="city"
                 type="text"
                 placeholder="Введите город"
               />{' '}
-              <button className="btnnav">выбрать</button>
+              <button className="btn">выбрать</button>
             </div>
-            <div>
+            <div className="Typean">
               <p>Кого вы ищете</p>
-              <input type="radio" name="type" value="cat" /> <label>кошку</label>
-              <input type="radio" name="type" value="dog" /> <label>собаку</label>
-              <input type="radio" name="type" value="other" /> <label>другое</label>
+              <p>
+                <label>
+                  <input name="type" type="radio" value="cat" />
+                  <span>Кошку</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input name="type" type="radio" value="dog" />
+                  <span>Собаку</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input name="type" type="radio" value="other" />
+                  <span>Другое</span>
+                </label>
+              </p>
             </div>
-            <div>
+            <div className="Typean">
               <p>Тип объявления</p>
-              <input type="text" placeholder="Все объявления" /> <button>выбрать</button>
+              <input type="text" placeholder="Все объявления" />{' '}
+              <button className="btn">выбрать</button>
             </div>
           </div>
-        </header>
-        <aside className="grid-element bg-red grid-aside">
-          <h6>База пропавших животных</h6>
-          <div className="conteinerforad">
+        </div>
+        <div className="adlist">
+          <h5 className="filterlistFirst">База пропавших животных</h5>
+          <div className="allad">
             {data ? (
               data.map((item) => (
-                <div key={item.id} className="advertSingl">
-                  <Link to={`${item.id}`}>
+                <div key={item.id} className="cardad">
+                  <Link className="formcard" to={`${item.id}`}>
                     <div>
                       <img className="sizeimgcards" src={item.photo} alt="dog" />
                     </div>
@@ -66,10 +81,10 @@ function Adverts(props) {
               <div>no data</div>
             )}
           </div>
-        </aside>
-        <main className="grid-element bg-blue grid-main">
+        </div>
+        <div className="grid-element bg-blue grid-main">
           <div id="map" className="map"></div>
-        </main>
+        </div>
       </section>
     </>
   );
