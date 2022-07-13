@@ -59,7 +59,7 @@ function Adverts(props) {
             </div>
           </div>
         </div>
-        <div className="adlist">
+        <div className="alllist">
           <h5 className="filterlistFirst">База пропавших животных</h5>
           <div className="allad">
             {data ? (
