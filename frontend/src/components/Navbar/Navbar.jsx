@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
 import { getFetchLogoutUserAC } from '../../redux/thunk/thunk';
 import './Navbar.css';
-import logo from '../../img/logo7.png'
+import logo from '../../img/logo1.png'
+import { $CombinedState } from 'redux';
 
 function Navbar(props) {
   const dispatch = useDispatch();
@@ -14,67 +15,63 @@ function Navbar(props) {
     dispatch(getFetchLogoutUserAC());
     navigate('/');
   }, [dispatch, navigate]);
+
   return (
-    <section className="header-down">
-      <div className="container">
-        <div className="logo-img">
-          <Link to="/" className="nav-logo">
-            <p className="nav-h1">
-              <img src={logo} className='logo' alt="logo" /> FindPets
-            </p>{' '}
-          </Link>
+    <>
+      <nav className="navb">
+        <div className="nav-wrapper">
+          <div className="container">
+            <Link to="/" className="brand-logo">
+              <img src={logo} className="logo" alt="logo" /> Find Pets
+            </Link>
+            <a href="*" data-target="mobile-demo" className="sidenav-trigger black-text">
+              <i className="material-icons">menu</i>
+            </a>
+            {user ? (
+              <ul className="right hide-on-med-and-down ">
+                <li className="textcolor">
+                  <Link to="/"></Link>
+                </li>
+                <li>
+                  <Link to="/adverts">Все объявления</Link>
+                </li>
+                <li>
+                  <button
+                    className="btn waves-effect waves-light"
+                    type="submit"
+                    name="action"
+                    onClick={hendlerLogout}
+                  >
+                    Выйти, {user.userName}{' '}
+                  </button>
+                </li>
+              </ul>
+            ) : (
+              <ul className="right hide-on-med-and-down">
+                <li>
+                  <Link to="/">Главная</Link>
+                </li>
+                <li>
+                  <Link to="/adverts">Все объявления</Link>
+                </li>
+                <li>
+                  <Link to="/login">Логин</Link>
+                </li>
+                <li>
+                  <Link to="/registration">Регистрация</Link>
+                </li>
+              </ul>
+            )}
+          </div>
         </div>
-        <nav>
-          {user ? (
-            <ul className="ulfirst">
-              <li>
-                <Link to="/" className="nav-link">
-                  Главная{' '}
-                </Link>
-              </li>
-              <li>
-                <Link to="/adverts" className="nav-link">
-                  Все объявления{' '}
-                </Link>
-              </li>
-              <li>
-                <button
-                  className="btn-nav1"
-                  onClick={hendlerLogout}
-                >
-                  Выйти, {user.userName}{' '}
-                </button>
-              </li>
-            </ul>
-          ) : (
-            <ul className="ulfirst">
-              <li>
-                <Link to="/" className="nav-link">
-                  Главная{' '}
-                </Link>
-              </li>
-              <li>
-                <Link to="/adverts" className="nav-link">
-                  Все объявления{' '}
-                </Link>
-              </li>
+      </nav>
 
-              <li>
-                <Link to="/login" className="nav-link">
-                  Логин{' '}
-                </Link>
-              </li>
-              <li>
-                <Link to="/registration" className="nav-link">
-                  Регистрация{' '}
-                </Link>
-              </li>
-            </ul>
-          )}
-        </nav>
-      </div>
-    </section>
-
+      <ul className="sidenav" id="mobile-demo">
+        <li>
+          <a href="sass.html">Sass</a>
+        </li>
+      </ul>
+    </>
   );
 }
 

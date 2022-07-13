@@ -103,6 +103,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-around;
+  
 }
 .city {
   width: 200px;
@@ -142,6 +143,7 @@ margin: 5px;
 }
 
 .map {
+  margin-top: 65px;
   height: 100vh;
   left: 0;
   position: absolute;

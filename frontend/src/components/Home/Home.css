@@ -1,194 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:wght@100&family=Quicksand:wght@500&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap');
-
-/* font-family: 'Albert Sans', sans-serif;
-font-family: 'Poppins', sans-serif;
-font-family: 'Quicksand', sans-serif;
-font-family: 'Roboto', sans-serif; */
-.hero {
-    position: relative;
-}
-
-.heroimg {
-    position: absolute;
-    width: 100%;
-    /* height: 600px; */
-    z-index: -1;
-}
-
-.hero .container {
-    display: flex;
-}
-
-.dog {
-    transform: translateY(5rem);
-    transform: translateX(5rem);
-    width: 40rem;
-   
-}
-
-.dog img {
-    width: 100%;
-}
-
-.hero-content {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 25rem;
-    transform: translateY(8rem);
-    -webkit-transform: translateY(8rem);
-    -moz-transform: translateY(8rem);
-    -ms-transform: translateY(8rem);
-    /* gap: 10px; */
-}
-
-.hero-content h3 {
-    font-size: 75px;
-    font-weight: 10;
-    color: #fff;
-    line-height: 1.1;
-    font-family: 'Poppins', sans-serif;
-}
-
-.hero-content span {
-    font-weight: 800 !important;
-    color: #fff;
-}
-
-.hero-content .phome {
-    margin: 20px 0 35px 0;
-    width: 35rem;
-    color: #fff;
-    line-height: 1.9;
-    font-size: 40px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
-
-}
-
-.services {
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-}
-
-.services .container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 40px;
-}
-
-.service-upper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.services .service-upper h2 {
-    font-size: 48px;
-    color: var(--heading-color);
-    letter-spacing: 0.5px;
-}
-
-.services .service-upper p {
-    font-size: 15px;
-    color: var(--paragraph1);
-    max-width: 40rem;
-    line-height: 2;
-    text-align: center;
-}
-
-.service-down {
-    /* margin-bottom: 50rem; */
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 30px;
-    flex-direction: row;
-    /* flex-wrap: wrap; */
-}
-
-.box img {
-    transition: 0.5s ease transform;
-}
-
-.box {
-    border: 2px solid rgb(255, 115, 0);
-    display: flex;
-    border-radius: 15px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 40px 15px 45px 15px;
-    gap: 30px;
-    transition: 0.3s ease-in-out;
-}
-
-.box:hover {
-    box-shadow: 0px 16px 35px 10px rgb(0 0 2 / 8%);
-    border: 1px solid transparent;
-    transform: scale(1.05);
-}
-
-.box p {
-    margin-block-start: 0;
-    margin-block-end: 0;
-    text-align: center;
-    color: var(--paragraph1);
-    line-height: 2;
-}
-
-.box h3 {
-    font-size: 25px;
-    font-weight: 600;
-    color: var(--heading-color);
-}
-
-.box-back {
-    /* background-image: url("img/service.png"); */
-    background-repeat: no-repeat;
-    width: 160px;
-    height: 140px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.d2 {
-  width: 400px;
-}
-
-.team {
-  width: 200px;
-}
-
-
-  .btn {
-    color: rgb(255, 115, 0);
-    text-decoration: none;
-    text-align: center;
-    background: #fff;
-    border: 2px solid  rgb(255, 115, 0);
-    font-weight: 300;
-    font-size: 16px;
-    width: 13rem;
-    padding: 18px 20px;
-    border-radius: 50px;
-    transition: 300ms rgb(255, 115, 0), 300ms, background rgb(255, 115, 0);
-    /* cursor: pointer; */
-    transition-duration: .3s;
-   
-}
-
-.btn:hover {
-    color: #fff;
-    background: rgb(255, 115, 0);
-    text-decoration: none;
-    background: rgb(255, 115, 0)
-    
-}
 
 .startSection {
-  padding-top: 250px;
-  padding-bottom: 160px;
+    font-family: 'NAMU 1600';
+  padding-top: 20px;
+  position: fixed;
+  width: 100%;
 }
 
 #start {
@@ -200,7 +15,7 @@ font-family: 'Roboto', sans-serif; */
 }
 
 .startText {
-  font-family: 'Prata', sans-serif;
+
   color: white;
   -webkit-font-smoothing: antialiased;
   font-size: 24px;
@@ -216,6 +31,43 @@ font-family: 'Roboto', sans-serif; */
 .forrad {
     color: rgb(255, 115, 0)
 }
+.serv{
+
+    margin-top: 70px;
+display: inline-flex;
+}
+.row{
+    display: flex;
+    /* margin-top: 800px; */
+    justify-content: center;
+    
+}
+.card {
+    width: 400px;
+    height: 400px;
+    border-radius: 15px;
+    border: 1px solid rgb(255, 115, 0);
+    opacity: 0.8;
+    margin: 0 50px;
+}
+.btn-floating {
+    background-color:rgb(255, 115, 0);
+}
+.btn-floating:hover {
+    background-color:rgb(247, 197, 33);
+}
+.card-title {
+    margin-left: 20px;
+}
+.heig {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+.container1{
+       display: flex;
+    justify-content: center;
+}
+
 
 
 

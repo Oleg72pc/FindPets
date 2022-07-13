@@ -22,11 +22,47 @@ function Home(props) {
           </div>
         </div>
         {/* </div> */}
-      </section>
 
-      <section className="services">
-        <div className="container">
-          <div className="service-down">
+        <div className="container1">
+          <div className="serv">
+            <div className="row">
+              <div className="col s12 m6">
+                <div className="card">
+                  <div className="card-image">
+                    <img src="img/catdog.png" alt="1" />
+                    <button
+                      className="btn waves-effect waves-light heig"
+                      onClick={() => navigate('./form/missing')}
+                    >
+                      Создать объявление
+                    </button>
+                  </div>
+                  <span className="card-title">Мой питомец потерялся</span>
+                  <div className="card-content">
+                    <p>Создать объявление о пропаже питомца, чтобы все увидели</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col s12 m6">
+                <div className="card">
+                  <div className="card-image">
+                    <img src="img/catdog.png" alt="1" />
+                    <button
+                      className="btn waves-effect waves-light heig"
+                      onClick={() => navigate('./form/found')}
+                    >
+                      Создать объявление
+                    </button>
+                  </div>
+                  <span className="card-title">Найден чужой питомец</span>
+                  <div className="card-content">
+                    <p>Вы нашли чужого питомца и хотите разместить объявление</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* <div className="service-down">
             <div className="box">
               <div className="box-back">
                 <img className="team" src="img/team.webp" alt="" />
@@ -43,6 +79,7 @@ function Home(props) {
               <p>Вы нашли чужого питомца и хотите разместить объявление</p>
               <button onClick={()=> navigate('./form/found')} className="btn">Создать объявление</button>
             </div>
+          </div> */}
           </div>
         </div>
       </section>
