@@ -48,7 +48,7 @@ async function init(){
         // Добавление метки (Placemark) на карту
         const placemark = new window.ymaps.Placemark(coordinates, {
           hintContent: `${geo[1]}`,
-          balloonContent: `<a href="/adverts/${geo[4]}" class="map-href">${geo[2]}</a>`,
+          balloonContent: `<a href="/adverts/${geo[4]}" class="map-href">${geo[2]} по адресу: ${geo[1]}</a>`,
         }, {
           preset: 'islands#redDotIcon',
           // Необходимо указать данный тип макета.
@@ -57,7 +57,7 @@ async function init(){
           // Своё изображение иконки метки.
           iconImageHref: `${geo[3]}`,
           // Размеры метки.
-          iconImageSize: [32, 32],
+          iconImageSize: [34, 34],
           // Смещение левого верхнего угла иконки относительно
           // её "ножки" (точки привязки).
           iconImageOffset: [-16, -16],

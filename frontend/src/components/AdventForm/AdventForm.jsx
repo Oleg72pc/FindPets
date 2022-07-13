@@ -9,7 +9,7 @@ export default function AdventForm() {
   const [state, setState] = useState('')
   const dispatch = useDispatch()
   const { info, photo } = useSelector(state => state.advertRed)
-
+  const user = useSelector((state) => state.userRed.user);
   let { name } = useParams()
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function AdventForm() {
 
   const addAdvent = (e) => {
     let data = {}
-    if (name === 'missing') {
+    if (name === 'missing' && !user) {
       data = {
         title: 'Потерялся',
         description: e.target.description.value,
@@ -156,7 +156,7 @@ export default function AdventForm() {
         </div>
         {/* <div><p>Сейчас</p> <input onChange={() => setState(new Date())} type='radio' name='date'/></div> */}
       </div>
-      {name === 'missing' &&
+      {name === 'missing' && !user && (
         <>
           <div>
             <div><p>Имя владельца</p> <input type='text' name='nameUser' /></div>
@@ -168,7 +168,7 @@ export default function AdventForm() {
             <div><p>Пароль для регистрации</p> <input type='password' name='password' /></div>
           </div>
         </>
-      }
+      )}
       <button type='submit'> Отправить форму </button>
     </form>
 

@@ -68,7 +68,10 @@ function Advert(props) {
               <div>{ad.title}</div>
               <div>{ad.description}</div>
               <div>{ad.location}</div>
-              <div>{ad.createdAt}</div>
+              <div>{
+                  `${new Date(ad.createdAt).getDate()}.${new Date(ad.createdAt).getMonth()}.${new Date(ad.createdAt).getFullYear()}
+                   ${new Date(ad.createdAt).getHours()}:${new Date(ad.createdAt).getMinutes()}`
+              }</div>
               <input value={comment} onChange={handleChangeComment} />
               <button onClick={handleSendComment}>Комментировать</button>
               {comments.length > 0 && comments.map((item) => <Comment comment={item} />)}
