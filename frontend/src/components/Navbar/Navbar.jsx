@@ -5,7 +5,6 @@ import { useCallback } from 'react';
 import { getFetchLogoutUserAC } from '../../redux/thunk/thunk';
 import './Navbar.css';
 import logo from '../../img/logo1.png'
-import { $CombinedState } from 'redux';
 
 function Navbar(props) {
   const dispatch = useDispatch();

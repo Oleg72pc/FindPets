@@ -23,7 +23,7 @@ function Adverts(props) {
           <div className="adline-box">
             <div>
               <p>Где вы ищете</p>
-              
+
               <input
                 className="city"
                 name="city"
