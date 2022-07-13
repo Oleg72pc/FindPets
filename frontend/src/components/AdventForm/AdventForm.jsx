@@ -23,7 +23,7 @@ export default function AdventForm() {
     let data = {}
     if (name === 'missing') {
       data = {
-        title: name,
+        title: 'Потерялся',
         description: e.target.description.value,
         genderAnimal: e.target.gender.value,
         location: e.target.address.value,
@@ -39,7 +39,7 @@ export default function AdventForm() {
       }
     } else {
       data = {
-        title: name,
+        title: 'Нашелся',
         description: e.target.description.value,
         genderAnimal: null,
         location: e.target.address.value,

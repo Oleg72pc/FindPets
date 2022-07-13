@@ -2,7 +2,7 @@ module.exports = {
   async up(queryInterface) {
     await queryInterface.bulkInsert('Ads', [
       {
-        title: 'missing',
+        title: 'Потерялся',
         description: 'Его сложно найти и легко потерять',
         genderAnimal: true,
         location: 'Санкт-Петербург проспект Ленина',
@@ -19,7 +19,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        title: 'missing',
+        title: 'Потерялся',
         description: 'Школьный друг Сплинтера',
         genderAnimal: true,
         location: 'Санкт-Петербург проспект Восстания',
@@ -36,7 +36,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        title: 'missing',
+        title: 'Потерялся',
         description: 'good boy',
         genderAnimal: true,
         location: 'Санкт-Петербург проспект Большевиков',
@@ -53,7 +53,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        title: 'missing',
+        title: 'Потерялся',
         description: 'сметано-жор',
         genderAnimal: true,
         location: 'Санкт-Петербург проспект Ленинский',
@@ -71,7 +71,7 @@ module.exports = {
       },
 
       {
-        title: 'found',
+        title: 'Нашелся',
         description: 'Его сложно найти и легко потерять',
         genderAnimal: true,
         location: 'МГА',
@@ -88,7 +88,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        title: 'missing',
+        title: 'Потерялся',
         description: 'Школьный друг Сплинтера',
         genderAnimal: true,
         location: 'Мурино',
@@ -105,7 +105,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        title: 'found',
+        title: 'Нашелся',
         description: 'Его сложно найти и легко потерять',
         genderAnimal: true,
         location: 'Шушары',
@@ -122,7 +122,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        title: 'missing',
+        title: 'Потерялся',
         description: 'Школьный друг Сплинтера',
         genderAnimal: true,
         location: 'Всеволожск',
