@@ -20,36 +20,27 @@ function Login() {
   };
   return (
     <form onSubmit={logUser} className="login-wrapper">
-      <div className="container1">
-        <div className="service-down1">
-          <div className="box1">
-            <h1>Логин</h1>
-            <div className="box-back1">
-              <img className="team1-log" src="img/article.webp" alt="" />
+      <div className="contlog">
+        <h3 className="log">Логин</h3>
+        <div className="container">
+          <div className="row">
+            <div className="input-field col s12 waves-light">
+              <input type="text" name="phoneNumber" />
+              <label for="phoneNumber">Телефон</label>
             </div>
-            <input
-              placeholder="Телефон"
-              className="phoneNumber"
-              name="phoneNumber"
-              type="text"
-            />
-            <input
-              placeholder="Пароль"
-              className="password"
-              name="password"
-              type="password"
-            />
-            <button className="btn1">Войти</button>
           </div>
+          <div className="row">
+            <div className="input-field col s12">
+              <input type="password" name="password" />
+              <label for="password">Пароль</label>
+            </div>
+          </div>
+        </div>
+        <div className="rowlog">
+          <button className="waves-effect waves-light btn">Войти</button>
         </div>
       </div>
     </form>
-    // <form onSubmit={logUser} className="login-wrapper">
-    //   <h1>Логин</h1>
-    //   <input placeholder="Телефон" className="phoneNumber" name="phoneNumber" type="text" />
-    //   <input placeholder="Пароль" className="password" name="password" type="password" />
-    //   <button>Войти</button>
-    // </form>
   );
 }
 

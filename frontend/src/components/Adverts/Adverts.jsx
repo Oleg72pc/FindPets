@@ -21,10 +21,11 @@ function Adverts(props) {
     <>
       <section className="grid-12">
         <header className="grid-element bg-gray grid-header">
-          <h1>Объявления</h1>
+          <h6>Объявления</h6>
           <div className="adline-box">
             <div>
               <p>Где вы ищете</p>
+              
               <input
                 className="city"
                 name="city"
@@ -35,9 +36,9 @@ function Adverts(props) {
             </div>
             <div>
               <p>Кого вы ищете</p>
-              <input type="radio" name='type' value='cat' /> <label>кошку</label>
-              <input type="radio" name='type' value='dog' /> <label>собаку</label>
-              <input type="radio" name='type' value='other' /> <label>другое</label>
+              <input type="radio" name="type" value="cat" /> <label>кошку</label>
+              <input type="radio" name="type" value="dog" /> <label>собаку</label>
+              <input type="radio" name="type" value="other" /> <label>другое</label>
             </div>
             <div>
               <p>Тип объявления</p>
@@ -46,19 +47,21 @@ function Adverts(props) {
           </div>
         </header>
         <aside className="grid-element bg-red grid-aside">
-          <h1>База пропавших животных</h1>
+          <h6>База пропавших животных</h6>
           <div className="conteinerforad">
             {data ? (
               data.map((item) => (
-                <div key={item.id} className='advertSingl'>
-                    <Link  to={`${item.id}`}>
-                    <div><img className="sizeimgcards" src={item.photo} alt="dog" /></div>
+                <div key={item.id} className="advertSingl">
+                  <Link to={`${item.id}`}>
+                    <div>
+                      <img className="sizeimgcards" src={item.photo} alt="dog" />
+                    </div>
                     <div className="containerad">
                       <div className="titlead">{item.title}</div>
                       <div className="nametitle">Описание: {item.description} </div>
                       <div className="nametitle"> Локация: {item.location}</div>
                     </div>
-                    </Link>
+                  </Link>
                 </div>
               ))
             ) : (
@@ -67,7 +70,7 @@ function Adverts(props) {
           </div>
         </aside>
         <main className="grid-element bg-blue grid-main">
-         <div id="map" className='map'></div>
+          <div id="map" className="map"></div>
         </main>
       </section>
     </>
