@@ -1,4 +1,91 @@
-.cardad {
+.map {
+  font-family: 'NAMU 1600';
+  z-index: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+[class*='copyrights-pane'] {
+  display: none !important;
+}
+
+.ymaps-2-1-79-image {
+  border-radius: 50%;
+  border: 2px solid rgb(49, 129, 181);
+}
+.filterad {
+  font-family: 'NAMU 1600';
+  z-index: 5;
+  height: 100%;
+  right: 10px;
+  position: fixed;
+  top: 75px;
+  width: 250px;
+  background-color: rgb(255, 255, 255);
+  /* border-radius: 15px; */
+  border: 1px solid rgb(255, 115, 0);
+}
+.filterlist {
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
+  margin: 30px;
+}
+.filterlistFirst {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 20px;
+  color: rgb(255, 115, 0);
+  margin-bottom: 30px;
+}
+.Typean {
+  margin-top: 30px;
+}
+.adlist{
+  font-family: 'NAMU 1600';
+  z-index: 5;
+  height: 100%;
+  left: 10px;
+  position: fixed;
+  top: 75px;
+  width: 450px;
+  background-color: rgb(255, 255, 255);
+  /* border-radius: 15px; */
+  border: 1px solid rgb(255, 115, 0);
+}
+
+
+.sizeimgcards {
+  width: 100px;
+  border-radius: 10px;
+   margin-top: 5px;
+   margin-left: 5px;
+}
+.containerad {
+  color: black;
+  padding-left: 10px;
+}
+.titlead {
+  text-decoration: none;
+}
+.nametitle {
+  color: rgb(111, 111, 111);
+  font-size: 12px;
+}
+.nametitle {
+  color: rgb(111, 111, 111);
+  font-size: 12px;
+}
+.formcard{
+  display: flex;
+  border: 1px solid silver;
+  margin: 5px;
+}
+/* .cardad {
   width: 300px;
   margin-top: 10px;
   border-radius: 10px;
@@ -76,21 +163,11 @@
 .grid-header {
   position: absolute;
   left: 500px;
-  /* grid-column-start: 1;
-  grid-column-end: 13;
-  grid-row-start: 1;
-  grid-row-end: 3; */
   z-index: 2;
   background-color: white;
 }
 
-/* .grid-aside {
-  grid-column-start: 1;
-  grid-column-end: 5;
-  grid-row-start: 3;
-  grid-row-end: 13;
-  position: relative;
-} */
+
 
 .grid-main {
   grid-column-start: 5;
@@ -126,7 +203,6 @@
   padding: 5px 10px;
   border-radius: 50px;
   transition: 300ms rgb(255, 115, 0), 300ms, background rgb(255, 115, 0);
-  /* cursor: pointer; */
   transition-duration: 0.3s;
 }
 .btnnav:hover {
@@ -158,4 +234,4 @@ margin: 5px;
 .ymaps-2-1-79-image{
   border-radius: 50%;
   border: 2px solid rgb(49, 129, 181);
-}
+} */

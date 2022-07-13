@@ -2,6 +2,7 @@
   background: rgb(255, 115, 0);
  font-family: 'NAMU 1600';
  
+ 
 }
 .btn{
   background:rgb(255, 115, 0);
@@ -14,5 +15,6 @@
   width: 40px
 }
 .navb {
-  
+  position: relative;
+  z-index: 1;
 }

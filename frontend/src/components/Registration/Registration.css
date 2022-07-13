@@ -1,19 +1,20 @@
 .contlog {
-    width: 500px;
-    height: 500px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -250px 0 0 -250px;
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -250px 0 0 -250px;
+  font-family: 'NAMU 1600';
+  color: rgb(255, 115, 0);
 }
 .log {
   display: flex;
   justify-content: center;
-  
 }
 .rowlog {
-      display: flex;
-     top: 50%;
-    left: 50%;
-    justify-content: center;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  justify-content: center;
 }

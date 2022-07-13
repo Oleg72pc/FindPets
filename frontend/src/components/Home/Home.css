@@ -1,6 +1,5 @@
-
 .startSection {
-    font-family: 'NAMU 1600';
+  font-family: 'NAMU 1600';
   padding-top: 20px;
   position: fixed;
   width: 100%;
@@ -15,62 +14,66 @@
 }
 
 .startText {
-
   color: white;
   -webkit-font-smoothing: antialiased;
   font-size: 24px;
   opacity: 60%;
 }
 .display-5 {
-      color: white;
-      font-size: 45px;
-      margin-bottom: 50px;
-     
+  color: white;
+  font-size: 45px;
+  margin-bottom: 50px;
 }
 
 .forrad {
-    color: rgb(255, 115, 0)
+  color: rgb(255, 115, 0);
 }
-.serv{
-
-    margin-top: 70px;
-display: inline-flex;
+.serv {
+  margin-top: 60px;
+  display: inline-flex;
 }
-.row{
-    display: flex;
-    /* margin-top: 800px; */
-    justify-content: center;
-    
+.row {
+  display: flex;
+  /* margin-top: 800px; */
+  justify-content: center;
 }
 .card {
-    width: 400px;
-    height: 400px;
-    border-radius: 15px;
-    border: 1px solid rgb(255, 115, 0);
-    opacity: 0.8;
-    margin: 0 50px;
+  width: 400px;
+  height: 400px;
+  border-radius: 15px;
+  border: 1px solid rgb(255, 115, 0);
+  opacity: 0.8;
+  margin: 0 50px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 .btn-floating {
-    background-color:rgb(255, 115, 0);
+  background-color: rgb(255, 115, 0);
 }
 .btn-floating:hover {
-    background-color:rgb(247, 197, 33);
+  background-color: rgb(247, 197, 33);
 }
-.card-title {
-    margin-left: 20px;
+.card-title{
+  margin-left: 20px;
+  color: rgb(255, 115, 0);
 }
 .heig {
-    margin-left: 20px;
-    margin-bottom: 10px;
+  margin-left: 20px;
+  margin-bottom: 10px;
 }
-.container1{
-       display: flex;
-    justify-content: center;
+.container1 {
+  display: flex;
+  justify-content: center;
 }
 
-
-
-
-
-
-
+.imgHome {
+  display: block;
+  border-radius: 20px 20px 0 0 !important;
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
