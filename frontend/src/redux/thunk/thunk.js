@@ -4,6 +4,7 @@ import {
   addUserAC,
   logoutUserAC,
   logUserErrorAC,
+  addUserErrorAC,
 } from '../actionCreators/userAC';
 import { initAdvetrsAC, addAdvertAC, addPhotoAC, initCommetnAC } from '../actionCreators/advertsAC';
 
@@ -57,8 +58,14 @@ export const postFetchUserRegistrationAC = (payload) => {
       body: JSON.stringify(payload),
     })
       .then((res) => res.json())
-      .then((data) => dispatch(addUserAC(data)));
-
+      .then((data) => {
+        console.log(data);
+          if(data.id){
+            dispatch(addUserAC(data));
+          } else {
+            dispatch(addUserErrorAC(data))
+          }
+      });
   }
 }
 

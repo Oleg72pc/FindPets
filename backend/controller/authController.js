@@ -12,25 +12,45 @@ async function sessionUser(req, res) {
       },
     });
   } else {
-    console.log('not user');
     res.send({ user: null });
   }
 }
 
 async function createUser(req, res) {
   const { userName, password, phoneNumber } = req.body;
-  try {
-    const user = await User.create({
-      userName,
-      password: await bcrypt.hash(password, 10),
-      isAdmin: false,
-      phoneNumber,
-    });
-    req.session.user = user;
-    res.send(user);
-  } catch (err) {
-    res.send(err.message);
+  const existingUser = await User.findOne({ where: { phoneNumber } });
+  // проверяем есть ли уже такой пользователь в БД
+  if (existingUser) {
+    res.json('* Пользователь с таким телефоном уже есть *');
+    return;
   }
+  if (!phoneNumber.match(/^((8|\+7)[ \- ]?)?(\(?\d{3}\)?[ \- ]?)?[\d\- ]{7,10}$/)) {
+    res.json('* Неверный формат телефона *');
+    return;
+  }
+  if (!password.match(/(?=.*[0-9])(?=.*[a-z])[0-9a-z]{6,}/)) {
+    res.json('* Пароль должен быть от 6 символов (строчные символы и минимум одна цифра) *');
+    return;
+  }
+  if (userName.length < 3) {
+    res.json('* Логин должен быть минимум 3 символа *');
+    return;
+  }
+
+  const user = await User.create({
+    userName,
+    password: await bcrypt.hash(password, 10),
+    isAdmin: false,
+    phoneNumber,
+  });
+  const newUser = {
+    id: user.id,
+    userName: user.userName,
+    isAdmin: user.isAdmin,
+    phoneNumber: user.phoneNumber,
+  };
+  req.session.user = newUser;
+  res.json(newUser);
 }
 
 async function loginUser(req, res) {
@@ -44,11 +64,10 @@ async function loginUser(req, res) {
       phoneNumber: existingUser.phoneNumber,
       isAdmin: existingUser.isAdmin,
     };
-    // кладём id нового пользователя в хранилище сессии (логиним пользователя)
     req.session.user = user;
     res.json(user);
   } else {
-    res.json('Неправильный телефон или пароль');
+    res.json('* Неверный телефон или пароль *');
   }
 }
 

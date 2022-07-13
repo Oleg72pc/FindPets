@@ -8,7 +8,7 @@ import './Login.css';
 function Login() {
   const dispatch = useDispatch();
   const navigation = useNavigate();
-  const {error, status} = useSelector((state) => state.userRed);
+  const {errorLOG, statusLOG} = useSelector((state) => state.userRed);
 
   const logUser = (e) => {
     e.preventDefault();
@@ -17,13 +17,12 @@ function Login() {
       password: e.target.password.value,
     };
     dispatch(postFetchUserLoginAC(data));
-    console.log(status);
   };
   useEffect(()=>{
-    if(status){
+    if(statusLOG){
         navigation('/');
     } 
-  },[status, navigation]);
+  },[statusLOG, navigation]);
 
   return (
     <form onSubmit={logUser} className="login-wrapper">
@@ -34,7 +33,7 @@ function Login() {
             <div className="box-back1">
               <img className="team1-log" src="img/article.webp" alt="" />
             </div>
-            {error && <div>{error}</div>}
+            {errorLOG && <div className='error-massage'>{errorLOG}</div>}
             <input
               placeholder="Телефон"
               className="phoneNumber"
