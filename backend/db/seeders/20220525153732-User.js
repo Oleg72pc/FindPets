@@ -14,7 +14,7 @@ module.exports = {
         userName: 'User',
         phoneNumber: '+7000987654321',
         password: await bcrypt.hash('qwerty2', 10),
-        isAdmin: true,
+        isAdmin: false,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
