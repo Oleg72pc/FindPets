@@ -1,12 +1,12 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postFetchUserRegistrationAC } from '../../redux/thunk/thunk';
 
 function Registration(props) {
   const dispatch = useDispatch();
   const navigation = useNavigate();
-
+  const {errorREG, statusREG} = useSelector((state) => state.userRed);
   const addUser = (e) => {
     e.preventDefault();
 
@@ -16,8 +16,13 @@ function Registration(props) {
       password: e.target.password.value,
     };
     dispatch(postFetchUserRegistrationAC(data));
-    navigation('/');
   };
+  useEffect(()=>{
+    if(statusREG){
+        navigation('/');
+    } 
+  },[statusREG, navigation]);
+
   return (
     <form onSubmit={addUser} className="login-wrapper">
       <div className="contlog">
@@ -28,6 +33,7 @@ function Registration(props) {
               <input type="text" name="userName" />
               <label for="userName">Логин</label>
             </div>
+            {errorREG && <div className='error-massage'>{errorREG}</div>}
           </div>
           <div className="row">
             <div className="input-field col s12 waves-light">
@@ -47,37 +53,6 @@ function Registration(props) {
         </div>
       </div>
     </form>
-    // <form onSubmit={addUser} className="login-wrapper">
-    //   <div className="container1">
-    //     <div className="service-down1">
-    //       <div className="box1">
-    //         <h1>Регистрация</h1>
-    //         <div className="box-back1">
-    //           <img className="team1-log" src="img/article.webp" alt="" />
-    //         </div>
-    //         <input
-    //           className="phoneNumber"
-    //           name="userName"
-    //           type="text"
-    //           placeholder="Введите логин"
-    //         />
-    //         <input
-    //           placeholder="Телефон"
-    //           className="phoneNumber"
-    //           name="phoneNumber"
-    //           type="text"
-    //         />
-    //         <input
-    //           className="password"
-    //           name="password"
-    //           type="password"
-    //           placeholder="Введите пароль"
-    //         />
-    //         <button className="btn1">Войти</button>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </form>
   );
 }
 

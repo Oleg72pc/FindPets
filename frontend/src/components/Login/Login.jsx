@@ -1,5 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postFetchUserLoginAC } from '../../redux/thunk/thunk';
 import './Login.css';
@@ -7,6 +8,7 @@ import './Login.css';
 function Login() {
   const dispatch = useDispatch();
   const navigation = useNavigate();
+  const {errorLOG, statusLOG} = useSelector((state) => state.userRed);
 
   const logUser = (e) => {
     e.preventDefault();
@@ -15,9 +17,13 @@ function Login() {
       password: e.target.password.value,
     };
     dispatch(postFetchUserLoginAC(data));
-
-    navigation('/');
   };
+  useEffect(()=>{
+    if(statusLOG){
+        navigation('/');
+    } 
+  },[statusLOG, navigation]);
+
   return (
     <form onSubmit={logUser} className="login-wrapper">
       <div className="contlog">
@@ -28,6 +34,10 @@ function Login() {
               <input type="text" name="phoneNumber" />
               <label for="phoneNumber">Телефон</label>
             </div>
+
+            {errorLOG && <div className='error-massage'>{errorLOG}</div>}
+
+
           </div>
           <div className="row">
             <div className="input-field col s12">
