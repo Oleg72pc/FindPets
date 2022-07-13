@@ -35,30 +35,21 @@ async function createUser(req, res) {
 
 async function loginUser(req, res) {
   const { phoneNumber, password } = req.body;
-  let user;
-  try {
-    user = await User.findOne({
-      where: {
-        phoneNumber,
-      },
-    });
-  } catch (err) {
-    res.send(err.message);
+  const existingUser = await User.findOne({ where: { phoneNumber } });
+  // проверяем, что такой пользователь есть в БД и пароли совпадают
+  if (existingUser && await bcrypt.compare(password, existingUser.password)) {
+    const user = {
+      id: existingUser.id,
+      userName: existingUser.userName,
+      phoneNumber: existingUser.phoneNumber,
+      isAdmin: existingUser.isAdmin,
+    };
+    // кладём id нового пользователя в хранилище сессии (логиним пользователя)
+    req.session.user = user;
+    res.json(user);
+  } else {
+    res.json('Неправильный телефон или пароль');
   }
-  if (!user) {
-    res.status(403);
-  }
-  let isSame;
-  try {
-    isSame = await bcrypt.compare(password, user.password);
-  } catch (err) {
-    res.status(403);
-  }
-  if (!isSame) {
-    res.status(403);
-  }
-  req.session.user = user;
-  res.send(user);
 }
 
 async function logoutUser(req, res) {

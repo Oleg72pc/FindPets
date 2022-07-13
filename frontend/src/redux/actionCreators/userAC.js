@@ -1,4 +1,4 @@
-import { REG_USER, LOG_USER, LOGOUT_USER, SESSION_USER } from "../actionTypes/userAT"
+import { REG_USER, LOG_USER, LOGOUT_USER, SESSION_USER, LOG_USER_ERROR } from "../actionTypes/userAT"
 
 export const addUserAC = (payload) => {
   return {
@@ -24,6 +24,13 @@ export const logoutUserAC = (payload) => {
 export const sessionUserAC = (payload) => {
   return {
     type: SESSION_USER,
+    payload,
+  };
+};
+
+export const logUserErrorAC = (payload) => {
+  return {
+    type: LOG_USER_ERROR,
     payload,
   };
 };

@@ -3,6 +3,7 @@ import {
   logUserAC,
   addUserAC,
   logoutUserAC,
+  logUserErrorAC,
 } from '../actionCreators/userAC';
 import { initAdvetrsAC, addAdvertAC, addPhotoAC, initCommetnAC } from '../actionCreators/advertsAC';
 
@@ -25,7 +26,11 @@ export const postFetchUserLoginAC = (payload) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        dispatch(logUserAC(data));
+        if(data.id){
+          dispatch(logUserAC(data));
+        } else {
+          dispatch(logUserErrorAC(data))
+        }
       });
   }
 }

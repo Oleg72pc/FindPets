@@ -1,5 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postFetchUserLoginAC } from '../../redux/thunk/thunk';
 import './Login.css';
@@ -7,6 +8,7 @@ import './Login.css';
 function Login() {
   const dispatch = useDispatch();
   const navigation = useNavigate();
+  const {error, status} = useSelector((state) => state.userRed);
 
   const logUser = (e) => {
     e.preventDefault();
@@ -15,9 +17,14 @@ function Login() {
       password: e.target.password.value,
     };
     dispatch(postFetchUserLoginAC(data));
-
-    navigation('/');
+    console.log(status);
   };
+  useEffect(()=>{
+    if(status){
+        navigation('/');
+    } 
+  },[status, navigation]);
+
   return (
     <form onSubmit={logUser} className="login-wrapper">
       <div className="container1">
@@ -27,6 +34,7 @@ function Login() {
             <div className="box-back1">
               <img className="team1-log" src="img/article.webp" alt="" />
             </div>
+            {error && <div>{error}</div>}
             <input
               placeholder="Телефон"
               className="phoneNumber"
