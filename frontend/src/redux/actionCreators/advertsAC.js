@@ -5,6 +5,8 @@ import {
   INIT_INFO,
   INIT_COMMENT,
   ADD_COMMENT,
+  DELETE_COMMENT,
+  DELETE_ADVERT,
 } from '../actionTypes/advertsAT';
 
 export const initAdvetrsAC = (payload) => {
@@ -49,3 +51,16 @@ export const addCommetnAC = (payload) => {
   };
 };
 
+export const deleteCommetnAC = (payload) => {
+  return {
+    type: DELETE_COMMENT,
+    payload,
+  };
+};
+
+export const deleteAdvertAC = (payload) => {
+  return {
+    type: DELETE_ADVERT,
+    payload,
+  };
+};

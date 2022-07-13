@@ -4,3 +4,5 @@ export const ADD_PHOTO = 'ADD_PHOTO';
 export const INIT_INFO = 'INIT_INFO';
 export const INIT_COMMENT = 'INIT_COMMENT';
 export const ADD_COMMENT = 'ADD_COMMENT';
+export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const DELETE_ADVERT = 'DELETE_ADVERT';

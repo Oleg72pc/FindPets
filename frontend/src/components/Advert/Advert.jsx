@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams} from 'react-router-dom';
 import Comment from '../Comment/Comment';
-import { addCommetnAC } from '../../redux/actionCreators/advertsAC';
+import { addCommetnAC, deleteAdvertAC, deleteCommetnAC } from '../../redux/actionCreators/advertsAC';
 import { getFetchInitAdvertsAC, postFetchaddComment } from '../../redux/thunk/thunk';
 
 
 function Advert(props) {
   const { advertId } = useParams();
+  const navigate =useNavigate()
   // const [data, setData] = React.useState();
   // React.useEffect(() => {
   //   fetch(`/ad/${advertId}`)
@@ -41,6 +42,7 @@ function Advert(props) {
     setComment(evt.currentTarget.value)
   }
 
+
     const handleSendComment = () => {
       fetch('/ad/comment', {
         method: 'POST',
@@ -58,6 +60,17 @@ function Advert(props) {
         .then(()=>{setComment('')})
     }
 
+    const handleDeleteAdvert = () => {
+      fetch(`http://localhost:4000/ad/delete/${advertId}`, {
+        method: 'DELETE',
+      }).then(()=>{
+         dispatch(deleteAdvertAC(advertId));
+         navigate('/adverts');
+      })
+     
+      
+    }
+
   return (
     <>
       <div className="contentAdvert">
@@ -71,7 +84,8 @@ function Advert(props) {
               <div>{ad.createdAt}</div>
               <input value={comment} onChange={handleChangeComment} />
               <button onClick={handleSendComment}>Комментировать</button>
-              {comments.length > 0 && comments.map((item) => <Comment comment={item} />)}
+              {user?.isAdmin && <button onClick={handleDeleteAdvert}>удалить нахр</button>}
+              {comments.length > 0 && comments.filter(item=> item.adId == advertId).map((item) => <Comment comment={item} />)}
             </div>
           </div>
         ) : (

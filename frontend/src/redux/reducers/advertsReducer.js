@@ -1,4 +1,4 @@
-import { INIT_ADVERTS, ADD_ADVERT, ADD_PHOTO, INIT_INFO, INIT_COMMENT, ADD_COMMENT } from '../actionTypes/advertsAT';
+import { INIT_ADVERTS, ADD_ADVERT, ADD_PHOTO, INIT_INFO, INIT_COMMENT, ADD_COMMENT, DELETE_COMMENT, DELETE_ADVERT } from '../actionTypes/advertsAT';
 
 const initialState = {
   adverts: [],
@@ -20,7 +20,17 @@ export const advertsReducer = (state = initialState, action) => {
     case INIT_COMMENT:
       return { ...state, comments: action.payload };
     case ADD_COMMENT:
-      return { ...state, comments: [ ...state.comments, action.payload ] };
+      return { ...state, comments: [...state.comments, action.payload] };
+    case DELETE_COMMENT:
+      return {
+        ...state,
+        comments: state.comments.filter((el) => el.id !== action.payload),
+      };
+    case DELETE_ADVERT:
+      return {
+        ...state,
+        comments: state.adverts.filter((el) => el.id !== action.payload),
+      };
 
     default:
       return state;
