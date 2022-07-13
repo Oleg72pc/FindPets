@@ -120,6 +120,20 @@ const postAdComment = async (req, res) => {
   res.status(200).send(comment);
 };
 
+const postDeleteAd = async (req, res) => {
+  const { id } = req.params;
+
+  await Ad.destroy({ where: { id } });
+  return res.status(200).send(true);
+};
+
+const postDeleteComment = async (req, res) => {
+  const { id } = req.params;
+
+  await Comment.destroy({ where: { id } });
+  res.status(200).send(true);
+};
+
 const getComments = async (req, res) => {
   const comments = await Comment.findAll();
   res.send(comments);
@@ -132,4 +146,6 @@ module.exports = {
   getAdSingl,
   postAdComment,
   getComments,
+  postDeleteComment,
+  postDeleteAd,
 };
