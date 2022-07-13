@@ -1,11 +1,8 @@
 import React from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
 
 function Comment(props) {
   const { comment } = props;
    const [user, setUser] = React.useState();
-  // const user = useSelector((state) => state.userRed.user);
-  console.log(user);
   React.useEffect(() => {
     if (comment.userId) {
       fetch(`/user/${comment.userId}`)

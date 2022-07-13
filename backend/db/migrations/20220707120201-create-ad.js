@@ -24,6 +24,7 @@ module.exports = {
       },
       photo: {
         type: Sequelize.TEXT,
+        defaultValue: 'https://nic-pnb.ru/wp-content/uploads/2014/09/no-foto-2.jpg',
       },
       spenTime: {
         type: Sequelize.DATE,

@@ -11,7 +11,6 @@ export default function AdventForm() {
   const { info, photo } = useSelector(state => state.advertRed)
   const user = useSelector((state) => state.userRed.user);
   let { name } = useParams()
-
   useEffect(() => {
     fetch('/getAnimalInfo')
       .then(res => res.json())
@@ -22,6 +21,7 @@ export default function AdventForm() {
   const addAdvent = (e) => {
     let data = {}
     if (name === 'missing' && !user) {
+    if(photo){
       data = {
         title: 'Потерялся',
         description: e.target.description.value,
@@ -36,8 +36,25 @@ export default function AdventForm() {
         colorId: e.target.color.value,
         typeId: e.target.animal.value,
         photo
-      }
+      } 
     } else {
+      data = {
+        title: 'Потерялся',
+        description: e.target.description.value,
+        genderAnimal: e.target.gender.value,
+        location: e.target.address.value,
+        lossTime: e.target.dateTime.value,
+        spenTime: null,
+        password: e.target.password.value,
+        phone: e.target.phone.value,
+        nameUser: e.target.nameUser.value,
+        cityId: e.target.city.value,
+        colorId: e.target.color.value,
+        typeId: e.target.animal.value,
+        }  
+    }
+    } else {
+      if(photo){
       data = {
         title: 'Нашелся',
         description: e.target.description.value,
@@ -53,7 +70,22 @@ export default function AdventForm() {
         typeId: e.target.animal.value,
         photo
       }
-      console.log(data);
+      } else {
+        data = {
+          title: 'Нашелся',
+          description: e.target.description.value,
+          genderAnimal: null,
+          location: e.target.address.value,
+          lossTime: null,
+          spenTime: e.target.dateTime.value,
+          password: null,
+          phone: null,
+          nameUser: null,
+          cityId: e.target.city.value,
+          colorId: e.target.color.value,
+          typeId: e.target.animal.value,
+        }
+      }
     }
     dispatch(postFetchAddAdventAC(data))
   }
@@ -135,7 +167,11 @@ export default function AdventForm() {
         {/* <select name='city'>{info.city?.map(el => <option key={el.id} value={el.id}>{el.title} </option>)}</select> */}
       </div>
       <div>
-        <div><p>Адрес пропажи</p> <input type='text' name='address' /></div>
+      {name === 'missing' ? 
+      (<div><p>Пропал по адресу:</p> <input type='text' name='address' /></div>)
+        :
+      (<div><p>Нашелся по адресу:</p> <input type='text' name='address' /></div>)
+      }
       </div>
       <div>
         <div><p>Описание</p> <input type='text' name='description' /></div>
