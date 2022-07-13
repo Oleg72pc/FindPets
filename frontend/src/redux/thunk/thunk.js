@@ -59,7 +59,6 @@ export const postFetchUserRegistrationAC = (payload) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
           if(data.id){
             dispatch(addUserAC(data));
           } else {

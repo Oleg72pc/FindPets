@@ -28,21 +28,18 @@ function Login() {
     <form onSubmit={logUser} className="login-wrapper">
       <div className="contlog">
         <h3 className="log">Логин</h3>
+            {errorLOG && <div className='error-massage'>{errorLOG}</div>}
         <div className="container">
           <div className="row">
             <div className="input-field col s12 waves-light">
               <input type="text" name="phoneNumber" />
-              <label for="phoneNumber">Телефон</label>
+              <label htmlFor="phoneNumber">Телефон</label>
             </div>
-
-            {errorLOG && <div className='error-massage'>{errorLOG}</div>}
-
-
           </div>
           <div className="row">
             <div className="input-field col s12">
               <input type="password" name="password" />
-              <label for="password">Пароль</label>
+              <label htmlFor="password">Пароль</label>
             </div>
           </div>
         </div>

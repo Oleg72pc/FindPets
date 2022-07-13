@@ -37,7 +37,7 @@ const addAdvent = async (req, res) => {
       photo,
     } = req.body;
     let newAdvent = {};
-    if (title === 'missing') {
+    if (title === 'Потерялся') {
       const newUser = await User.create({
         userName: nameUser,
         phoneNumber: phone,

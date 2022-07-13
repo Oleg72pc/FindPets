@@ -36,6 +36,10 @@ body {
    background-color: #f7f6f6;
 }
 
+.error-massage{
+  color: red;
+  text-align: center;
+}
 
 
 

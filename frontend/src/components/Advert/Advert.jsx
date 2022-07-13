@@ -30,8 +30,6 @@ function Advert(props) {
   React.useEffect(() => {
     dispatch(postFetchaddComment(advertId));
   }, [dispatch, advertId]);
-  
-  console.log(comments)
 
   const ad = React.useMemo(
     // eslint-disable-next-line eqeqeq

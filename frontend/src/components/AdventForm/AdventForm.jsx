@@ -23,7 +23,7 @@ export default function AdventForm() {
 
     const addAdvent = (e) => {
       let data = {}
-      if(name === 'missing'){
+      if(name === 'Потерялся'){
       data = {
         title: name,
         description: e.target.description.value,
@@ -95,7 +95,7 @@ export default function AdventForm() {
             } )}
             </div>
             </div>
-            {name === 'missing' && 
+            {name === 'Потерялся' && 
               <div>
                 <div> Пол животного </div>
                 <div><p>Мальчик</p> <input type='radio' value = 'true' name='gender'/></div>
@@ -120,7 +120,7 @@ export default function AdventForm() {
                 <input defaultValue={state} name='dateTime' />
                 <div><p>Сейчас</p> <input onChange={() => setState(new Date())} type='radio' name='date'/></div>
               </div>
-              {name === 'missing' &&  
+              {name === 'Потерялся' &&  
              <>
              <div>
                 <div><p>Имя владельца</p> <input type='text' name='nameUser'/></div>
