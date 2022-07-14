@@ -14,7 +14,7 @@ export const advertsReducer = (state = initialState, action) => {
     case INIT_ADVERTS:
       return { ...state, adverts: action.payload , filterAdverts: action.payload};
     case ADD_ADVERT:
-      return { ...state, advert: [...state.adverts, action.payload] };
+      return { ...state, advert: [...state.adverts, action.payload], photo:'' };
     case ADD_PHOTO:
       return { ...state, photo: action.payload };
     case INIT_INFO:

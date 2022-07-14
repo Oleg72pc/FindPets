@@ -25,7 +25,7 @@ function Comment(props) {
     };
   return (
     <div className="commar" key={comment.id}>
-      <div className="grayt">{user ? <div>{user.userName}</div> : <div>Гость</div>}</div>
+      <div className="grayt">{comment.User ? <div>{comment.User.userName}</div> : <div>Гость</div>}</div>
       <div>{comment.text}</div>
       <div className="graytdate">{`${new Date(comment.createdAt).getDate()}.${new Date(
         comment.createdAt

@@ -150,9 +150,9 @@ export default function AdventForm() {
             ))}
           </div>
         </div>
+          {name === 'missing' && (
         <div className="animalsfilter">
           <div> Пол животного </div>
-          {name === 'missing' && (
             <div className="inlinekr" action="#">
               <p>
                 <label>
@@ -168,12 +168,12 @@ export default function AdventForm() {
                 </label>
               </p>
             </div>
-          )}
         </div>
+          )}
       </div>
       <div className="inlinekr">
         <div className="inlinekr1">
-          <div className="titlenum2">Город</div>
+          <div className="titlenum2">Город:  </div>
           <select name="city" className="browser-default">
             {info.city?.map((el) => (
               <option key={el.id} value={el.id}>

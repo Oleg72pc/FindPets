@@ -75,6 +75,7 @@ function Advert(props) {
                 <div>
                   {' '}
                   <span className="grayt">Локация:</span> {ad.location}
+              
                 </div>
                 <div>
                   <span className="grayt">Дата пропажи:</span>{' '}
@@ -88,6 +89,18 @@ function Advert(props) {
                     <span className="grayt">Описание: </span>
                     {ad.description}
                   </div>
+                  {ad.User && (
+                    <>
+                  <div>
+                    <span className="grayt">Имя хозяина: </span>
+                    {ad.User.userName}
+                  </div>
+                  <div>
+                    <span className="grayt">Связаться: </span>
+                    {ad.User.phoneNumber}
+                  </div>
+                  </>
+                  )}
                 </div>
               {user?.isAdmin && (
                 <button className="btn btndelete2" onClick={handleDeleteAdvert}>

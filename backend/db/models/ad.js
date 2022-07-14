@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({
       User, PetColor, TypeAnimal, City, Comment,
     }) {
-      // Ad.User = Ad.belongsTo(User, { foreignKey: 'userId' });
+      Ad.User = Ad.belongsTo(User, { foreignKey: 'userId' });
       // Ad.PetColor = Ad.belongsTo(PetColor, { foreignKey: 'colorId' });
       // Ad.TypeAnimal = Ad.belongsTo(TypeAnimal, { foreignKey: 'typeId' });
       // Ad.City = Ad.belongsTo(City, { foreignKey: 'CityId' });
