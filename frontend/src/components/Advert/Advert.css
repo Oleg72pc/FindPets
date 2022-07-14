@@ -1,0 +1,39 @@
+.contoc {
+  font-family: 'NAMU 1600';
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+.imgonecardid {
+  width: 500px;
+  height: 350px;
+  border-radius: 15px;
+  margin-right: 150px;
+  object-fit: cover;
+  margin-bottom: 50px;
+  margin-left: 0;
+}
+.titlec {
+  font-size: 50px;
+  color: rgb(255, 115, 0);
+  text-align: center;
+}
+.formformap {
+  margin-top: 50px;
+  margin-left: 0;
+  max-width: 1140px;
+  height: 300px;
+
+  border: 1px solid rgb(255, 115, 0);
+}
+.textob {
+  border: 1px solid rgb(255, 115, 0);
+  border-radius: 15px;
+  width: 400px;
+  height: 350px;
+  padding: 10px;
+}
+.commentscard{
+   margin-top: 50px;
+  margin-bottom: 100px;
+}
