@@ -29,11 +29,12 @@ function Advert(props) {
     [adverts, advertId]
   );
 
+
   const handleChangeComment = (evt) => {
     setComment(evt.currentTarget.value);
   };
-
   const handleSendComment = () => {
+
     fetch('/ad/comment', {
       method: 'POST',
       body: JSON.stringify({
@@ -75,7 +76,7 @@ function Advert(props) {
                 <div>
                   {' '}
                   <span className="grayt">Локация:</span> {ad.location}
-              
+
                 </div>
                 <div>
                   <span className="grayt">Дата пропажи:</span>{' '}
@@ -91,22 +92,22 @@ function Advert(props) {
                   </div>
                   {ad.User && (
                     <>
-                  <div>
-                    <span className="grayt">Имя хозяина: </span>
-                    {ad.User.userName}
-                  </div>
-                  <div>
-                    <span className="grayt">Связаться: </span>
-                    {ad.User.phoneNumber}
-                  </div>
-                  </>
+                      <div>
+                        <span className="grayt">Имя хозяина: </span>
+                        {ad.User.userName}
+                      </div>
+                      <div>
+                        <span className="grayt">Связаться: </span>
+                        {ad.User.phoneNumber}
+                      </div>
+                    </>
                   )}
                 </div>
-              {user?.isAdmin && (
-                <button className="btn btndelete2" onClick={handleDeleteAdvert}>
-                  удалить объявление
-                </button>
-              )}
+                {user?.isAdmin && (
+                  <button className="btn btndelete2" onClick={handleDeleteAdvert}>
+                    удалить объявление
+                  </button>
+                )}
               </div>
 
             </div>
