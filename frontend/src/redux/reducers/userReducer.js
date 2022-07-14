@@ -26,7 +26,7 @@ export const userReducer = (state = initialState, action) => {
     case SESSION_USER:
       return { ...state, user: action.payload.user };
     case REGFORM_USER:
-      return { ...state, user: action.payload, statusREGFORM: true };
+      return { ...state, user: action.payload.userName ? action.payload : null, statusREGFORM: true };
     case REGFORM_USER_ERROR:
       return { ...state, errorREGFORM: action.payload, statusREGFORM: false };
     case REGFORM_USER_ERROR_STATUS_FALSE:

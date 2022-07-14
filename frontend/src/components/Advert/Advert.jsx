@@ -10,15 +10,6 @@ import './Advert.css';
 function Advert(props) {
   const { advertId } = useParams();
   const navigate = useNavigate();
-  // const [data, setData] = React.useState();
-  // React.useEffect(() => {
-  //   fetch(`/ad/${advertId}`)
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       setData(result);
-  //     });
-  // }, [advertId]);
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getFetchInitAdvertsAC());
@@ -84,6 +75,7 @@ function Advert(props) {
                 <div>
                   {' '}
                   <span className="grayt">Локация:</span> {ad.location}
+              
                 </div>
                 <div>
                   <span className="grayt">Дата пропажи:</span>{' '}
@@ -96,6 +88,14 @@ function Advert(props) {
                   <div>
                     <span className="grayt">Описание: </span>
                     {ad.description}
+                  </div>
+                  <div>
+                    <span className="grayt">Имя хозяина: </span>
+                    {ad.User.userName}
+                  </div>
+                  <div>
+                    <span className="grayt">Связаться: </span>
+                    {ad.User.phoneNumber}
                   </div>
                 </div>
               {user?.isAdmin && (

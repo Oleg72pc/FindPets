@@ -26,7 +26,6 @@ function Adverts(props) {
     dispatch(resetFilterAdventsAC())
     setState(false)
   }
-
   return (
     <>
       <section className="containerad">

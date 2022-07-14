@@ -3,7 +3,9 @@ const { Ad, User, Comment } = require('../db/models');
 const storageFileupload = require('../storageFileupload');
 
 const getAd = async (req, res) => {
-  const AdCarts = await Ad.findAll();
+  const AdCarts = await Ad.findAll({
+    include: [Ad.User],
+  });
   res.send(AdCarts);
 };
 
@@ -35,6 +37,7 @@ const addAdvent = async (req, res) => {
     typeId,
     photo,
   } = req.body;
+
   let newAdvent = {};
   if (title === 'Потерялся') {
     const existingUser = await User.findOne({ where: { phoneNumber: phone } });
@@ -95,8 +98,8 @@ const addAdvent = async (req, res) => {
       typeId,
       photo,
     });
-    res.json(user);
     req.session.user = user;
+    res.json(user);
   } else {
     if (description.length <= 0) {
       res.json('* Заполните описание *');
