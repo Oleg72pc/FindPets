@@ -6,6 +6,7 @@ import {
   logUserErrorAC,
   addUserErrorAC,
   addFormUserErrorAC,
+  addFormUserAC,
 } from '../actionCreators/userAC';
 import { initAdvetrsAC, addAdvertAC, addPhotoAC, initCommetnAC } from '../actionCreators/advertsAC';
 
@@ -48,6 +49,7 @@ export const postFetchAddAdventAC = (payload) => {
       .then((data) => {
         if(data.id){
           dispatch(addAdvertAC(data));
+          dispatch(addFormUserAC(data))
         } else {
           dispatch(addFormUserErrorAC(data))
         }

@@ -6,7 +6,8 @@ import {
   LOG_USER_ERROR, 
   REG_USER_ERROR, 
   REGFORM_USER, 
-  REGFORM_USER_ERROR } from "../actionTypes/userAT"
+  REGFORM_USER_ERROR, 
+  REGFORM_USER_ERROR_STATUS_FALSE} from "../actionTypes/userAT"
 
 export const addUserAC = (payload) => {
   return {
@@ -60,6 +61,13 @@ export const addFormUserAC = (payload) => {
 export const addFormUserErrorAC = (payload) => {
   return {
     type: REGFORM_USER_ERROR,
+    payload,
+  };
+};
+
+export const addFormUserErrorFalseAC = (payload) => {
+  return {
+    type: REGFORM_USER_ERROR_STATUS_FALSE,
     payload,
   };
 };

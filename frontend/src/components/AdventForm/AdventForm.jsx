@@ -4,12 +4,13 @@ import { initInfoAC } from '../../redux/actionCreators/advertsAC'
 import { useDispatch, useSelector } from 'react-redux'
 import { addPhoto, postFetchAddAdventAC } from '../../redux/thunk/thunk'
 import { useNavigate, useParams } from 'react-router-dom'
+import { addFormUserErrorFalseAC } from '../../redux/actionCreators/userAC'
 
 export default function AdventForm() {
   const [state] = useState('')
   const dispatch = useDispatch()
   const { info, photo } = useSelector(state => state.advertRed)
-  const {errorREGFORM, statusREGFORM} = useSelector((state) => state.userRed);
+  const {errorREGFORM} = useSelector((state) => state.userRed);
     const navigation = useNavigate();
   const user = useSelector((state) => state.userRed.user);
   let { name } = useParams()
@@ -17,14 +18,10 @@ export default function AdventForm() {
     fetch('/getAnimalInfo')
       .then(res => res.json())
       .then(data => dispatch(initInfoAC(data)))
+      dispatch(addFormUserErrorFalseAC())
 
   }, [dispatch])
-
-  useEffect(()=>{
-    if(statusREGFORM){
-        navigation('/');
-    } 
-  },[statusREGFORM, navigation])
+  
 
   const addAdvent = (e) => {
      e.preventDefault()
@@ -98,6 +95,7 @@ export default function AdventForm() {
       }
     }
     dispatch(postFetchAddAdventAC(data))
+    navigation('/adverts');
     
   }
 
