@@ -89,6 +89,8 @@ function Advert(props) {
                     <span className="grayt">Описание: </span>
                     {ad.description}
                   </div>
+                  {ad.User && (
+                    <>
                   <div>
                     <span className="grayt">Имя хозяина: </span>
                     {ad.User.userName}
@@ -97,6 +99,8 @@ function Advert(props) {
                     <span className="grayt">Связаться: </span>
                     {ad.User.phoneNumber}
                   </div>
+                  </>
+                  )}
                 </div>
               {user?.isAdmin && (
                 <button className="btn btndelete2" onClick={handleDeleteAdvert}>

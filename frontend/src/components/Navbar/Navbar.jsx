@@ -23,9 +23,6 @@ function Navbar(props) {
             <Link to="/" className="brand-logo">
               <img src={logo} className="logo" alt="logo" /> Find Pets
             </Link>
-            <a href="*" data-target="mobile-demo" className="sidenav-trigger black-text">
-              <i className="material-icons">menu</i>
-            </a>
             {user ? (
               <ul className="right hide-on-med-and-down ">
                 <li className="textcolor">
@@ -48,28 +45,22 @@ function Navbar(props) {
             ) : (
               <ul className="right hide-on-med-and-down">
                 <li>
-                  <Link to="/">Главная</Link>
+                  <Link className="navLinkMob" to="/">Главная</Link>
                 </li>
                 <li>
-                  <Link to="/adverts">Все объявления</Link>
+                  <Link className="navLinkMob" to="/adverts">Все объявления</Link>
                 </li>
                 <li>
-                  <Link to="/login">Логин</Link>
+                  <Link className="navLinkMob" to="/login">Логин</Link>
                 </li>
                 <li>
-                  <Link to="/registration">Регистрация</Link>
+                  <Link className="navLinkMob" to="/registration">Регистрация</Link>
                 </li>
               </ul>
             )}
           </div>
         </div>
       </nav>
-
-      <ul className="sidenav" id="mobile-demo">
-        <li>
-          <a href="sass.html">Sass</a>
-        </li>
-      </ul>
     </>
   );
 }

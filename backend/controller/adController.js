@@ -5,6 +5,9 @@ const storageFileupload = require('../storageFileupload');
 const getAd = async (req, res) => {
   const AdCarts = await Ad.findAll({
     include: [Ad.User],
+    order: [
+      ['createdAt', 'DESC'],
+    ],
   });
   res.send(AdCarts);
 };
@@ -134,6 +137,10 @@ const addAdvent = async (req, res) => {
 const getAdSingl = async (req, res) => {
   const { advertId } = req.params;
   const coments = await Comment.findAll({
+    order: [
+      ['createdAt', 'ASC'],
+    ],
+    include: [Comment.User],
     where: {
       adId: advertId,
     },
