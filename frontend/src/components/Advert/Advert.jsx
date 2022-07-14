@@ -127,7 +127,7 @@ function Advert(props) {
             .map((item) => <Comment comment={item} />)}
       </div>
     </div>
-  );
+  )
 }
 
 export default Advert;
