@@ -1,4 +1,4 @@
-import {LOG_USER, LOGOUT_USER, REG_USER, SESSION_USER, LOG_USER_ERROR, REG_USER_ERROR} from "../actionTypes/userAT";
+import {LOG_USER, LOGOUT_USER, REG_USER, SESSION_USER, LOG_USER_ERROR, REG_USER_ERROR, REGFORM_USER, REGFORM_USER_ERROR} from "../actionTypes/userAT";
 
 const initialState = { user: null };
 
@@ -16,6 +16,10 @@ export const userReducer = (state = initialState, action) => {
       return { ...state, user: null, error: null, statusLOG: false, statusREG: false };
     case SESSION_USER:
       return { ...state, user: action.payload.user };
+    case REGFORM_USER:
+      return { ...state, user: action.payload, statusREGFORM: true };
+    case REGFORM_USER_ERROR:
+      return { ...state, errorREGFORM: action.payload, statusREGFORM: false };
     default:
       return state;
   }

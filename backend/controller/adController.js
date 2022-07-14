@@ -47,11 +47,27 @@ const addAdvent = async (req, res) => {
       return;
     }
     if (!password.match(/(?=.*[0-9])(?=.*[a-z])[0-9a-z]{6,}/)) {
-      res.json('* Пароль должен быть от 6 символов (строчные символы и минимум одна цифра) *');
+      res.json('* Пароль должен быть от 6 символов (Латинские строчные и минимум одна цифра) *');
       return;
     }
     if (nameUser.length < 3) {
       res.json('* Логин должен быть минимум 3 символа *');
+      return;
+    }
+    if (description.length <= 0) {
+      res.json('* Заполните описание *');
+      return;
+    }
+    if (!genderAnimal) {
+      res.json('* Укажите пол животного*');
+      return;
+    }
+    if (!typeId) {
+      res.json('* Укажите тип животного *');
+      return;
+    }
+    if (!colorId) {
+      res.json('* Укажите цвет животного *');
       return;
     }
     const newUser = await User.create({
@@ -82,6 +98,18 @@ const addAdvent = async (req, res) => {
     res.json(user);
     req.session.user = user;
   } else {
+    if (description.length <= 0) {
+      res.json('* Заполните описание *');
+      return;
+    }
+    if (!typeId) {
+      res.json('* Укажите тип животного *');
+      return;
+    }
+    if (!colorId) {
+      res.json('* Укажите цвет животного *');
+      return;
+    }
     newAdvent = await Ad.create({
       title,
       description,

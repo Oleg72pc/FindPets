@@ -88,7 +88,7 @@ function Advert(props) {
               <input value={comment} onChange={handleChangeComment} />
               <button onClick={handleSendComment}>Комментировать</button>
               {user?.isAdmin && <button onClick={handleDeleteAdvert}>удалить нахр</button>}
-              {comments.length > 0 && comments.filter(item=> item.adId == advertId).map((item) => <Comment comment={item} />)}
+              {comments.length > 0 && comments.filter(item=> item.adId == advertId).map((item) => <Comment comment={item}  key={item.id}/>)}
             </div>
           </div>
         ) : (

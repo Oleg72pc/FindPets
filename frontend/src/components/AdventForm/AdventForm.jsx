@@ -3,12 +3,14 @@ import { useEffect } from 'react'
 import { initInfoAC } from '../../redux/actionCreators/advertsAC'
 import { useDispatch, useSelector } from 'react-redux'
 import { addPhoto, postFetchAddAdventAC } from '../../redux/thunk/thunk'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export default function AdventForm() {
   const [state] = useState('')
   const dispatch = useDispatch()
   const { info, photo } = useSelector(state => state.advertRed)
+  const {errorREGFORM, statusREGFORM} = useSelector((state) => state.userRed);
+    const navigation = useNavigate();
   const user = useSelector((state) => state.userRed.user);
   let { name } = useParams()
   useEffect(() => {
@@ -18,11 +20,16 @@ export default function AdventForm() {
 
   }, [dispatch])
 
+  useEffect(()=>{
+    if(statusREGFORM){
+        navigation('/');
+    } 
+  },[statusREGFORM, navigation])
+
   const addAdvent = (e) => {
-    // e.preventDefault()
+     e.preventDefault()
     const filter = info.city.filter((el) => el.id === +e.target.city.value)
     let data = {}
-    console.log(filter[0].title);
     if (name === 'missing' && !user) {
       if (photo) {
         data = {
@@ -91,6 +98,7 @@ export default function AdventForm() {
       }
     }
     dispatch(postFetchAddAdventAC(data))
+    
   }
 
   const sendFiles = async (e) => {
@@ -192,7 +200,7 @@ export default function AdventForm() {
       {/* <p>Time</p>
           <input className="bodyCard_input" type="datetime-local" name="date" /> */}
         {/* <div> Дата и время пропажи </div> */}
-        <input defaultValue={state} type="datetime-local" name='dateTime' />
+        <input defaultValue={state} type="datetime-local" name='dateTime' required/>
         {/* <div>
           <p>
             <label>
@@ -218,7 +226,8 @@ export default function AdventForm() {
       </>
     )
   }
-  <button type='submit'> Отправить форму </button>
+  <button type='submit'> Отправить форму </button> 
+  {errorREGFORM && <div className="error-massage">{errorREGFORM}</div>}
     </form >
 
   )
