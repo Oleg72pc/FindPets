@@ -70,25 +70,6 @@ function Advert(props) {
     });
   };
   return (
-
-    <>
-      //<div className="contentAdvert">
-        //{ad ? (
-          //<div key={ad.id} className="card">
-            //<img style={{ width: '200px' }} src={ad.photo} alt="dog" />
-           // <div className="container">
-              //<div>{ad.title}</div>
-             // <div>{ad.description}</div>
-              //<div>{ad.location}</div>
-              //<div>{
-                 // `${new Date(ad.createdAt).getDate()}.${new Date(ad.createdAt).getMonth()}.${new Date(ad.createdAt).getFullYear()}
-                //   ${new Date(ad.createdAt).getHours()}:${new Date(ad.createdAt).getMinutes()}`
-              //}</div>
-             // <input value={comment} onChange={handleChangeComment} />
-             // <button onClick={handleSendComment}>Комментировать</button>
-             // {user?.isAdmin && <button onClick={handleDeleteAdvert}>удалить нахр</button>}
-             // {comments.length > 0 && comments.filter(item=> item.adId == advertId).map((item) => <Comment comment={item}  key={item.id}/>)}
-
     <div className="container">
       <div className="">
         <div>

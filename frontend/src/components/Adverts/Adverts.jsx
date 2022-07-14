@@ -6,14 +6,26 @@ import { Link } from 'react-router-dom';
 import { getFetchInitAdvertsAC } from '../../redux/thunk/thunk';
 import init from '../../apimap';
 import './Adverts.css';
+import { useState } from 'react';
+import { filterAdventsAC, resetFilterAdventsAC } from '../../redux/actionCreators/advertsAC';
 
 function Adverts(props) {
-  const data = useSelector((state) => state.advertRed.adverts);
+  const { info, filterAdverts}  = useSelector((state) => state.advertRed);
+  const [state, setState] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getFetchInitAdvertsAC());
     window.ymaps.ready(init);
   }, [dispatch]);
+
+  const filterAdvertsFunction = (e)=>{
+    setState(true)
+  dispatch(filterAdventsAC(e))
+  }
+  const resetFilterAdvertsFunction = (e)=>{
+    dispatch(resetFilterAdventsAC())
+    setState(false)
+  }
 
   return (
     <>
@@ -23,47 +35,43 @@ function Adverts(props) {
           <div className="filterlist">
             <div className="filtercity">
               <p>Где вы ищете</p>
-              <input
-                className="city"
-                name="city"
-                type="text"
-                placeholder="Введите город"
-              />{' '}
-              <button className="btn">выбрать</button>
+              <select onChange={filterAdvertsFunction} name='cityId' className="browser-default">
+            <option value=''>Все города</option>
+            { info.city && info.city.map(el => <option key={el.id} value={el.id}>{el.title}</option>)}
+          </select>
             </div>
             <div className="Typean">
               <p>Кого вы ищете</p>
-              <p>
+              {info.typeAnimal && info.typeAnimal.map(el => 
+              <p key={el.id}>
                 <label>
-                  <input name="type" type="radio" value="cat" />
-                  <span>Кошку</span>
+                <input type="radio" name='typeId' value={el.id} onChange={filterAdvertsFunction} /><span>{el.title}</span> 
                 </label>
               </p>
-              <p>
-                <label>
-                  <input name="type" type="radio" value="dog" />
-                  <span>Собаку</span>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <input name="type" type="radio" value="other" />
-                  <span>Другое</span>
-                </label>
-              </p>
+              )}
             </div>
             <div className="Typean">
               <p>Тип объявления</p>
-              <input type="text" placeholder="Все объявления" />{' '}
-              <button className="btn">выбрать</button>
+              <p>
+              <label>
+              <input type="radio" name='title' value='Нашелся' onChange={filterAdvertsFunction}/> <span>О пропаже</span>
+              </label>
+              </p>
+              <p>
+              <label>
+              <input type="radio" name='title' value='Потерялся' onChange={filterAdvertsFunction}/> <span>О находке</span>
+              </label>
+              </p>
+              <br/>
+              { state && <button className="btn" onClick={resetFilterAdvertsFunction}>Сбросить фильтры</button>}
             </div>
           </div>
         </div>
         <div className="alllist">
           <h5 className="filterlistFirst">База пропавших животных</h5>
           <div className="allad">
-            {data ? (
-              data.map((item) => (
+            {filterAdverts ? (
+              filterAdverts.map((item) => (
                 <div key={item.id} className="cardad">
                   <Link className="formcard" to={`${item.id}`}>
                     <div>

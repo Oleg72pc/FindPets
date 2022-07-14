@@ -7,6 +7,8 @@ import {
   ADD_COMMENT,
   DELETE_COMMENT,
   DELETE_ADVERT,
+  RESET_FILTER_ADVERTS,
+  FILTER_ADVERTS,
 } from '../actionTypes/advertsAT';
 
 export const initAdvetrsAC = (payload) => {
@@ -64,3 +66,16 @@ export const deleteAdvertAC = (payload) => {
     payload,
   };
 };
+
+export const resetFilterAdventsAC =() =>{
+  return {
+    type : RESET_FILTER_ADVERTS,
+  }
+} 
+
+export const filterAdventsAC =(payload) =>{
+  return {
+    type : FILTER_ADVERTS,
+    payload,
+  }
+}

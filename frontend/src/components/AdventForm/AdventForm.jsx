@@ -10,7 +10,7 @@ export default function AdventForm() {
   const [state] = useState('')
   const dispatch = useDispatch()
   const { info, photo } = useSelector(state => state.advertRed)
-  const {errorREGFORM} = useSelector((state) => state.userRed);
+  const {errorREGFORM, statusREGFORM} = useSelector((state) => state.userRed);
     const navigation = useNavigate();
   const user = useSelector((state) => state.userRed.user);
   let { name } = useParams()
@@ -21,7 +21,12 @@ export default function AdventForm() {
       dispatch(addFormUserErrorFalseAC())
 
   }, [dispatch])
-  
+
+  useEffect(()=>{
+    if(statusREGFORM){
+        navigation('/adverts');
+    } 
+  },[statusREGFORM, navigation]);
 
   const addAdvent = (e) => {
      e.preventDefault()
@@ -95,7 +100,7 @@ export default function AdventForm() {
       }
     }
     dispatch(postFetchAddAdventAC(data))
-    navigation('/adverts');
+    
     
   }
 

@@ -8,7 +8,7 @@ import {
   addFormUserErrorAC,
   addFormUserAC,
 } from '../actionCreators/userAC';
-import { initAdvetrsAC, addAdvertAC, addPhotoAC, initCommetnAC } from '../actionCreators/advertsAC';
+import { initAdvetrsAC, addAdvertAC, addPhotoAC, initCommetnAC, initInfoAC } from '../actionCreators/advertsAC';
 
 export const getFetchUserSessionAC = () => {
   return (dispatch) => {
@@ -135,5 +135,13 @@ export const postFetchUserRegistrationFormAC = (payload) => {
             dispatch(addUserErrorAC(data))
           }
       });
+  }
+}
+export const getFetchAnimalInfoAC = () => {
+  return (dispatch) => {
+    fetch('/getAnimalInfo')
+    .then(res => res.json())
+    .then(data => dispatch( initInfoAC(data)))
+     
   }
 }
