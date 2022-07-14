@@ -5,6 +5,8 @@ import {
   logoutUserAC,
   logUserErrorAC,
   addUserErrorAC,
+  addFormUserErrorAC,
+  addFormUserAC,
 } from '../actionCreators/userAC';
 import { initAdvetrsAC, addAdvertAC, addPhotoAC, initCommetnAC } from '../actionCreators/advertsAC';
 
@@ -45,7 +47,12 @@ export const postFetchAddAdventAC = (payload) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        dispatch(addAdvertAC(data));
+        if(data.id){
+          dispatch(addAdvertAC(data));
+          dispatch(addFormUserAC(data))
+        } else {
+          dispatch(addFormUserErrorAC(data))
+        }
       });
   }
 }
@@ -109,6 +116,24 @@ export const postFetchaddComment = (payload) => {
       .then((res) => res.json())
       .then((result) => {
         dispatch(initCommetnAC(result));
+      });
+  }
+}
+
+export const postFetchUserRegistrationFormAC = (payload) => {
+  return (dispatch) => {
+     fetch('auth/registration', {
+      headers: { 'content-type': 'application/json' },
+      method: 'POST',
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+          if(data.id){
+            dispatch(addUserAC(data));
+          } else {
+            dispatch(addUserErrorAC(data))
+          }
       });
   }
 }

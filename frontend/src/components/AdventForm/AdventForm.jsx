@@ -3,22 +3,29 @@ import { useEffect } from 'react'
 import { initInfoAC } from '../../redux/actionCreators/advertsAC'
 import { useDispatch, useSelector } from 'react-redux'
 import { addPhoto, postFetchAddAdventAC } from '../../redux/thunk/thunk'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { addFormUserErrorFalseAC } from '../../redux/actionCreators/userAC'
 
 export default function AdventForm() {
-  const [state, setState] = useState('')
+  const [state] = useState('')
   const dispatch = useDispatch()
   const { info, photo } = useSelector(state => state.advertRed)
+  const {errorREGFORM} = useSelector((state) => state.userRed);
+    const navigation = useNavigate();
   const user = useSelector((state) => state.userRed.user);
   let { name } = useParams()
   useEffect(() => {
     fetch('/getAnimalInfo')
       .then(res => res.json())
       .then(data => dispatch(initInfoAC(data)))
+      dispatch(addFormUserErrorFalseAC())
 
   }, [dispatch])
+  
 
   const addAdvent = (e) => {
+     e.preventDefault()
+    const filter = info.city.filter((el) => el.id === +e.target.city.value)
     let data = {}
     if (name === 'missing' && !user) {
       if (photo) {
@@ -26,7 +33,7 @@ export default function AdventForm() {
           title: 'Потерялся',
           description: e.target.description.value,
           genderAnimal: e.target.gender.value,
-          location: e.target.address.value,
+          location: `${filter[0].title}, ${e.target.address.value}`,
           lossTime: e.target.dateTime.value,
           spenTime: null,
           password: e.target.password.value,
@@ -42,7 +49,7 @@ export default function AdventForm() {
           title: 'Потерялся',
           description: e.target.description.value,
           genderAnimal: e.target.gender.value,
-          location: e.target.address.value,
+          location: `${filter[0].title}, ${e.target.address.value}`,
           lossTime: e.target.dateTime.value,
           spenTime: null,
           password: e.target.password.value,
@@ -59,7 +66,7 @@ export default function AdventForm() {
           title: 'Нашелся',
           description: e.target.description.value,
           genderAnimal: null,
-          location: e.target.address.value,
+          location: `${filter[0].title}, ${e.target.address.value}`,
           lossTime: null,
           spenTime: e.target.dateTime.value,
           password: null,
@@ -75,7 +82,7 @@ export default function AdventForm() {
           title: 'Нашелся',
           description: e.target.description.value,
           genderAnimal: null,
-          location: e.target.address.value,
+          location: `${filter[0].title}, ${e.target.address.value}`,
           lossTime: null,
           spenTime: e.target.dateTime.value,
           password: null,
@@ -88,6 +95,8 @@ export default function AdventForm() {
       }
     }
     dispatch(postFetchAddAdventAC(data))
+    navigation('/adverts');
+    
   }
 
   const sendFiles = async (e) => {
@@ -105,7 +114,7 @@ export default function AdventForm() {
 
 
   return (
-    <form onSubmit={addAdvent}>
+    <form onSubmit={addAdvent} className='container'>
       <div> Тип животного</div>
       <div action="#"> {info.typeAnimal?.map(animal => (
         // <div key={animal.id}>
@@ -186,16 +195,18 @@ export default function AdventForm() {
         :
       (<div><p> Дата и время находки:</p></div>)
       }
+      {/* <p>Time</p>
+          <input className="bodyCard_input" type="datetime-local" name="date" /> */}
         {/* <div> Дата и время пропажи </div> */}
-        <input defaultValue={state} name='dateTime' />
-        <div>
+        <input defaultValue={state} type="datetime-local" name='dateTime' required/>
+        {/* <div>
           <p>
             <label>
               <input onChange={() => setState(new Date())} type='radio' name='date' />
               <span>Сейчас</span>
             </label>
           </p>
-        </div>
+        </div> */}
         {/* <div><p>Сейчас</p> <input onChange={() => setState(new Date())} type='radio' name='date'/></div> */}
       </div>
       {
@@ -213,7 +224,8 @@ export default function AdventForm() {
       </>
     )
   }
-  <button type='submit'> Отправить форму </button>
+  <button type='submit'> Отправить форму </button> 
+  {errorREGFORM && <div className="error-massage">{errorREGFORM}</div>}
     </form >
 
   )

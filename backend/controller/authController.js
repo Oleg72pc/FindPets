@@ -29,7 +29,7 @@ async function createUser(req, res) {
     return;
   }
   if (!password.match(/(?=.*[0-9])(?=.*[a-z])[0-9a-z]{6,}/)) {
-    res.json('* Пароль должен быть от 6 символов (строчные символы и минимум одна цифра) *');
+    res.json('* Пароль должен быть от 6 символов ((Латинские буквы и минимум одна цифра)) *');
     return;
   }
   if (userName.length < 3) {
