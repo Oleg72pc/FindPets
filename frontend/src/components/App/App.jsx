@@ -10,12 +10,13 @@ import Registration from '../Registration/Registration';
 import './App.css'
 import Advert from '../Advert/Advert';
 import AdventForm from '../AdventForm/AdventForm';
-import { getFetchUserSessionAC } from '../../redux/thunk/thunk';
+import { getFetchAnimalInfoAC, getFetchUserSessionAC } from '../../redux/thunk/thunk';
 
 function App(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getFetchUserSessionAC())
+    dispatch( getFetchAnimalInfoAC())
   }, [dispatch]);
   
   return (
