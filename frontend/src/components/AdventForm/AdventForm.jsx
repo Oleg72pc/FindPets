@@ -6,7 +6,7 @@ import { addPhoto, postFetchAddAdventAC } from '../../redux/thunk/thunk'
 import { useParams } from 'react-router-dom'
 
 export default function AdventForm() {
-  const [state, setState] = useState('')
+  const [state] = useState('')
   const dispatch = useDispatch()
   const { info, photo } = useSelector(state => state.advertRed)
   const user = useSelector((state) => state.userRed.user);
@@ -19,14 +19,17 @@ export default function AdventForm() {
   }, [dispatch])
 
   const addAdvent = (e) => {
+    // e.preventDefault()
+    const filter = info.city.filter((el) => el.id === +e.target.city.value)
     let data = {}
+    console.log(filter[0].title);
     if (name === 'missing' && !user) {
       if (photo) {
         data = {
           title: 'Потерялся',
           description: e.target.description.value,
           genderAnimal: e.target.gender.value,
-          location: e.target.address.value,
+          location: `${filter[0].title}, ${e.target.address.value}`,
           lossTime: e.target.dateTime.value,
           spenTime: null,
           password: e.target.password.value,
@@ -42,7 +45,7 @@ export default function AdventForm() {
           title: 'Потерялся',
           description: e.target.description.value,
           genderAnimal: e.target.gender.value,
-          location: e.target.address.value,
+          location: `${filter[0].title}, ${e.target.address.value}`,
           lossTime: e.target.dateTime.value,
           spenTime: null,
           password: e.target.password.value,
@@ -59,7 +62,7 @@ export default function AdventForm() {
           title: 'Нашелся',
           description: e.target.description.value,
           genderAnimal: null,
-          location: e.target.address.value,
+          location: `${filter[0].title}, ${e.target.address.value}`,
           lossTime: null,
           spenTime: e.target.dateTime.value,
           password: null,
@@ -75,7 +78,7 @@ export default function AdventForm() {
           title: 'Нашелся',
           description: e.target.description.value,
           genderAnimal: null,
-          location: e.target.address.value,
+          location: `${filter[0].title}, ${e.target.address.value}`,
           lossTime: null,
           spenTime: e.target.dateTime.value,
           password: null,
@@ -105,7 +108,7 @@ export default function AdventForm() {
 
 
   return (
-    <form onSubmit={addAdvent}>
+    <form onSubmit={addAdvent} className='container'>
       <div> Тип животного</div>
       <div action="#"> {info.typeAnimal?.map(animal => (
         // <div key={animal.id}>
@@ -186,16 +189,18 @@ export default function AdventForm() {
         :
       (<div><p> Дата и время находки:</p></div>)
       }
+      {/* <p>Time</p>
+          <input className="bodyCard_input" type="datetime-local" name="date" /> */}
         {/* <div> Дата и время пропажи </div> */}
-        <input defaultValue={state} name='dateTime' />
-        <div>
+        <input defaultValue={state} type="datetime-local" name='dateTime' />
+        {/* <div>
           <p>
             <label>
               <input onChange={() => setState(new Date())} type='radio' name='date' />
               <span>Сейчас</span>
             </label>
           </p>
-        </div>
+        </div> */}
         {/* <div><p>Сейчас</p> <input onChange={() => setState(new Date())} type='radio' name='date'/></div> */}
       </div>
       {
