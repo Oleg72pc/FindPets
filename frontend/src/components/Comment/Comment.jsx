@@ -5,7 +5,6 @@ import './Comment.css'
 
 function Comment(props) {
   const { comment } = props;
-  //  const [user, setUser] = React.useState();
   // React.useEffect(() => {
   //   if (comment.userId) {
   //     fetch(`/user/${comment.userId}`)

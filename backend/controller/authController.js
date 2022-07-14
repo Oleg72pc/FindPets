@@ -6,6 +6,7 @@ async function sessionUser(req, res) {
   if (user) {
     res.send({
       user: {
+        id: user.id,
         userName: user.userName,
         phoneNumber: user.phoneNumber,
         isAdmin: user.isAdmin,
@@ -29,7 +30,7 @@ async function createUser(req, res) {
     return;
   }
   if (!password.match(/(?=.*[0-9])(?=.*[a-z])[0-9a-z]{6,}/)) {
-    res.json('* Пароль должен быть от 6 символов ((Латинские буквы и минимум одна цифра)) *');
+    res.json('* Пароль от 6 символов, латинские буквы и минимум одна цифра *');
     return;
   }
   if (userName.length < 3) {

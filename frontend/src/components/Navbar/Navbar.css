@@ -30,4 +30,7 @@
  .navLinkMob{
   font-size: 10px;
  }
+ .navb {
+  z-index: 2;
+ }
 }
