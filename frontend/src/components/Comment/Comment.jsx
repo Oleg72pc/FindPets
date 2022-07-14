@@ -24,14 +24,21 @@ function Comment(props) {
      
     };
   return (
-    <div className='commar' key={comment.id}>
-      <div>{user ? <div>{user.userName}</div> : <div>Гость:</div>}</div>
+    <div className="commar" key={comment.id}>
+      <div className="grayt">{user ? <div>{user.userName}</div> : <div>Гость</div>}</div>
       <div>{comment.text}</div>
-      <div>{
-      `${new Date(comment.createdAt).getDate()}.${new Date(comment.createdAt).getMonth()}.${new Date(comment.createdAt).getFullYear()}
-       ${new Date(comment.createdAt).getHours()}:${new Date(comment.createdAt).getMinutes()}`
-       }</div>
-      {user?.isAdmin && <button className='btn' onClick={handleDeleteComment}>delete</button>}
+      <div className="graytdate">{`${new Date(comment.createdAt).getDate()}.${new Date(
+        comment.createdAt
+      ).getMonth()}.${new Date(comment.createdAt).getFullYear()}
+       ${new Date(comment.createdAt).getHours()}:${new Date(
+        comment.createdAt
+      ).getMinutes()}`}</div>
+      {user?.isAdmin && (
+        <button className="btn btndelete" onClick={handleDeleteComment}>
+          удалить
+          
+        </button>
+      )}
     </div>
   );
 }

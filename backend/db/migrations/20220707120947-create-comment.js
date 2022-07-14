@@ -17,7 +17,6 @@ module.exports = {
           model: 'Users',
           key: 'id',
         },
-
       },
       adId: {
         type: Sequelize.INTEGER,
@@ -25,7 +24,8 @@ module.exports = {
           model: 'Ads',
           key: 'id',
         },
-
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
       },
       createdAt: {
         allowNull: false,

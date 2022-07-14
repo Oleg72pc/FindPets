@@ -1,8 +1,13 @@
 .contoc {
   font-family: 'NAMU 1600';
+  max-width: 1140px;
   margin-top: 50px;
   display: flex;
   justify-content: center;
+  border: 1px solid rgb(255, 115, 0);
+  padding: 15px;
+  background-color: rgba(255, 123, 0, 0.055);
+  height: min-content;
 }
 .imgonecardid {
   width: 500px;
@@ -14,9 +19,10 @@
   margin-left: 0;
 }
 .titlec {
-  font-size: 50px;
+  font-size: 28px;
   color: rgb(255, 115, 0);
   text-align: center;
+  margin-bottom: 20px;
 }
 .formformap {
   margin-top: 50px;
@@ -28,12 +34,40 @@
 }
 .textob {
   border: 1px solid rgb(255, 115, 0);
-  border-radius: 15px;
+  height: min-content;
+
   width: 400px;
-  height: 350px;
+  
   padding: 10px;
+      display: flex;
+    flex-direction: column;
 }
-.commentscard{
-   margin-top: 50px;
+.commentscard {
+  margin-top: 50px;
   margin-bottom: 100px;
+}
+.grayt {
+  color: gray;
+}
+@media (max-width: 767px) {
+  .contoc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+  }
+  .imgonecardid {
+    width: 90%;
+    height: 200px;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 150px;
+  }
+  .textob {
+    height: auto;
+    width: 90%;
+  }
 }

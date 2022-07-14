@@ -62,7 +62,7 @@ function Advert(props) {
   };
 
   const handleDeleteAdvert = () => {
-    fetch(`http://localhost:4000/ad/delete/${advertId}`, {
+    fetch(`/ad/delete/${advertId}`, {
       method: 'DELETE',
     }).then(() => {
       dispatch(deleteAdvertAC(advertId));
@@ -77,19 +77,32 @@ function Advert(props) {
             <div key={ad.id} className="contoc">
               <img className="imgonecardid" src={ad.photo} alt="dog" />
               <div className="textob">
-                <div className="titlec">{ad.title}</div>
-
-                <div>Локация: {ad.location}</div>
+                <div className="titlec">Подробная информация</div>
                 <div>
-                  Дата пропажи:{' '}
+                  <span className="grayt">Тип объявления:</span> {ad.title}
+                </div>
+                <div>
+                  {' '}
+                  <span className="grayt">Локация:</span> {ad.location}
+                </div>
+                <div>
+                  <span className="grayt">Дата пропажи:</span>{' '}
                   {`${new Date(ad.createdAt).getDate()}.${new Date(
                     ad.createdAt
                   ).getMonth()}.${new Date(ad.createdAt).getFullYear()}
                    ${new Date(ad.createdAt).getHours()}:${new Date(
                     ad.createdAt
                   ).getMinutes()}`}
-                  <div>Описание: {ad.description}</div>
+                  <div>
+                    <span className="grayt">Описание: </span>
+                    {ad.description}
+                  </div>
                 </div>
+              {user?.isAdmin && (
+                <button className="btn btndelete2" onClick={handleDeleteAdvert}>
+                  удалить объявление
+                </button>
+              )}
               </div>
             </div>
           ) : (
@@ -97,7 +110,7 @@ function Advert(props) {
           )}
         </div>
       </div>
-      <div className="formformap">map</div>
+      {/* <div className="formformap">map</div> */}
       <div className="commentscard">
         <input
           placeholder="Оставить комментарий"
@@ -107,11 +120,6 @@ function Advert(props) {
         <button className="btn" onClick={handleSendComment}>
           Комментировать
         </button>{' '}
-        {user?.isAdmin && (
-          <button className="btn" onClick={handleDeleteAdvert}>
-            удалить
-          </button>
-        )}
         {comments.length > 0 &&
           comments
             .filter((item) => item.adId == advertId)

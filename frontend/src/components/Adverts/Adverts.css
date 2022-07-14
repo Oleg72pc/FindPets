@@ -97,6 +97,19 @@
   border: 1px solid silver;
   margin: 5px;
 }
+@media (max-width: 767px) {
+  .alllist{
+  font-family: 'NAMU 1600';
+  z-index: 5;
+  height: 30%;
+  left: 30px;
+  width: 350px;
+
+
+ 
+  margin-bottom: 0;
+}
+}
 /* .cardad {
   width: 300px;
   margin-top: 10px;
