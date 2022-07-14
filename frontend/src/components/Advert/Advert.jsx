@@ -71,9 +71,9 @@ function Advert(props) {
   };
   return (
 
-    <>
-      //<div className="contentAdvert">
-        //{ad ? (
+    // <>
+    //   //<div className="contentAdvert">
+    //     //{ad ? (
           //<div key={ad.id} className="card">
             //<img style={{ width: '200px' }} src={ad.photo} alt="dog" />
            // <div className="container">
@@ -146,7 +146,7 @@ function Advert(props) {
             .map((item) => <Comment comment={item} />)}
       </div>
     </div>
-  );
+  )
 }
 
 export default Advert;
