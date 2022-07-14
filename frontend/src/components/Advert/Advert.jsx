@@ -10,15 +10,6 @@ import './Advert.css';
 function Advert(props) {
   const { advertId } = useParams();
   const navigate = useNavigate();
-  // const [data, setData] = React.useState();
-  // React.useEffect(() => {
-  //   fetch(`/ad/${advertId}`)
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       setData(result);
-  //     });
-  // }, [advertId]);
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getFetchInitAdvertsAC());
@@ -127,7 +118,7 @@ function Advert(props) {
             .map((item) => <Comment comment={item} />)}
       </div>
     </div>
-  );
+  )
 }
 
 export default Advert;
