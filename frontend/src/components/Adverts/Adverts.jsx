@@ -53,12 +53,12 @@ function Adverts(props) {
               <p>Тип объявления</p>
               <p>
               <label>
-              <input type="radio" name='title' value='Нашелся' onChange={filterAdvertsFunction}/> <span>О пропаже</span>
+              <input type="radio" name='title' value='Нашелся' onChange={filterAdvertsFunction}/> <span>О находке</span>
               </label>
               </p>
               <p>
               <label>
-              <input type="radio" name='title' value='Потерялся' onChange={filterAdvertsFunction}/> <span>О находке</span>
+              <input type="radio" name='title' value='Потерялся' onChange={filterAdvertsFunction}/> <span>О пропаже</span>
               </label>
               </p>
               <br/>
